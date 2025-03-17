@@ -73,7 +73,7 @@ const GoogleMap: React.FC<GoogleMapProps> = ({ location, setLocation }) => {
   }, [geocoderService, location.center]);
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full shadow">
       <Map
         defaultCenter={INITIAL_CENTER}
         center={location.center}
@@ -108,21 +108,6 @@ const GoogleMap: React.FC<GoogleMapProps> = ({ location, setLocation }) => {
 
       <div className="bg-accent/20 absolute top-1/2 left-1/2 -translate-1/2 w-14 h-14 outline-1 outline-accent rounded-full flex items-center justify-center">
         <MapPin size={"lg"} className="stroke-accent w-7 h-7" />
-      </div>
-
-      {/* Display coordinates and Radius */}
-      <div className="absolute bottom-2 left-2 bg-white p-2 rounded shadow-lg text-center w-3/5">
-        <p className="text-sm text-gray-700 text-clip mb-1">
-          <MapPin className="w-4 h-4 inline m-1" /> {location.address}
-        </p>
-        <Button
-          variant="secondary"
-          size="lg"
-          className="w-full"
-          // onClick={fetchAddressFromCenter}
-        >
-          Use this location
-        </Button>
       </div>
     </div>
   );

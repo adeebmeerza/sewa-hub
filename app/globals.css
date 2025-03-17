@@ -131,3 +131,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .form-item {
+    @apply flex flex-row items-center gap-1;
+  }
+}
