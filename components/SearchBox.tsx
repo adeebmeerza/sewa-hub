@@ -24,7 +24,7 @@ import {
 } from "./ui/dialog";
 
 import MapContainer from "./google-maps/MapContainer";
-import { CalendarIcon, MapPin } from "lucide-react";
+import { CalendarIcon, MapPin, Search } from "lucide-react";
 import { APIProvider } from "@vis.gl/react-google-maps";
 import React, { useState } from "react";
 import { INITIAL_CENTER } from "./google-maps/GoogleMap";
@@ -33,6 +33,15 @@ import { cn } from "@/lib/utils";
 import { DateRange } from "react-day-picker";
 import { addDays, format } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
+import Link from "next/link";
+
+const popularItems = [
+  "Stuff Wagon",
+  "Driller",
+  "Wet & dry vacuum",
+  "DJI Mavic Air",
+  "Insta 360",
+];
 
 const FormSchema = z.object({
   query: z.string().trim().toLowerCase(),
@@ -83,7 +92,7 @@ const SearchBox = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-2 min-w-max w-full max-w-[900px] mx-auto"
+        className="space-y-3 w-full mx-auto"
       >
         {/* Search Input + Button */}
         <div className="relative">
@@ -94,16 +103,18 @@ const SearchBox = () => {
               <FormItem>
                 <FormControl>
                   <div className="relative h-15">
+                    <Search className="absolute left-2 top-1/2 -translate-y-1/2 rounded-xl text-gray-500" />
                     <Input
-                      placeholder="Enter item name to rent ..."
+                      placeholder="Search +200 items to rent"
                       {...field}
-                      className="h-full bg-background rounded-2xl px-8 text-base!"
+                      className="h-full rounded-2xl px-8 pl-10 bg-blue-50 border border-blue-200 shadow-md text-base! text-primary"
                     />
 
                     <CustomButton
                       type="submit"
                       variant="default"
-                      className="absolute right-2 top-1/2 -translate-y-1/2 rounded-xl"
+                      size="lg"
+                      className="absolute right-2 top-1/2 -translate-y-1/2 rounded-xl p-5.5"
                     >
                       Search items
                     </CustomButton>
@@ -116,23 +127,28 @@ const SearchBox = () => {
 
         {/* Location + Date */}
         <div className="flex justify-center gap-16 query-details">
-          <FormItem className="flex flex-row items-center gap-1">
-            <FormLabel className="text-base text-white font-normal gap-1">
-              <MapPin size={14} className="bottom-[1px] relative" />
+          <FormItem className="flex flex-row items-center gap-2">
+            <FormLabel className="text-base text-secondary font-normal gap-1">
+              <MapPin />
               <span>Near</span>
             </FormLabel>
             <FormControl>
               <div>
                 <Dialog open={isOpenDialog} onOpenChange={setIsOpenDialog}>
                   <DialogTrigger
-                    className="cursor-pointer flex items-center gap-2 "
+                    className="cursor-pointer flex items-center gap-2"
                     asChild
                   >
-                    <Button asChild variant="link" size="sm">
+                    <Button
+                      asChild
+                      variant="outline"
+                      size="default"
+                      className="hover:bg-secondary"
+                    >
                       <Input
                         value={location.address}
                         readOnly
-                        className="min-w-max truncate text-eclipsee text-left border-none px-0 text-base! text-blue-300 font-medium"
+                        className="min-w-35 w-50 truncate text-ellipsis text-left font-medium bg-blue-50 text-secondary"
                       />
                     </Button>
                   </DialogTrigger>
@@ -185,8 +201,9 @@ const SearchBox = () => {
             </FormControl>
           </FormItem>
 
-          <FormItem className="flex flex-row items-center gap-1">
-            <FormLabel className="text-base text-white font-normal gap-1">
+          {/* Rental period */}
+          <FormItem className="flex flex-row items-center gap-2">
+            <FormLabel className="text-base text-secondary font-normal gap-1">
               <CalendarIcon />
               <span className="text-nowrap">Rental period</span>
             </FormLabel>
@@ -195,13 +212,9 @@ const SearchBox = () => {
                 <Dialog>
                   <DialogTrigger asChild>
                     <Button
-                      id="date"
-                      variant={"link"}
-                      size="sm"
-                      className={cn(
-                        "justify-start text-left font-normal text-base px-0",
-                        !date && "text-blue-300"
-                      )}
+                      variant="outline"
+                      size="default"
+                      className="hover:bg-secondary"
                       asChild
                     >
                       {date?.from ? (
@@ -213,19 +226,19 @@ const SearchBox = () => {
                                   ${format(date.to, "LLL dd, y")}
                                 `}
                             readOnly
-                            className="min-w-max truncate text-eclipsee text-left border-none px-0 text-base! text-blue-300 font-medium"
+                            className="min-w-50 max-w-max truncate text-ellipsis text-left font-medium bg-blue-50 text-secondary"
                           />
                         ) : (
-                          <span>
-                            <Input
-                              value={format(date.from, "LLL dd, y")}
-                              readOnly
-                              className="min-w-max truncate text-eclipsee text-left border-none px-0 text-base! text-blue-300 font-medium"
-                            />
-                          </span>
+                          <Input
+                            value={format(date.from, "LLL dd, y")}
+                            readOnly
+                            className="min-w-50 max-w-max truncate text-ellipsis text-left font-medium bg-blue-50 text-secondary"
+                          />
                         )
                       ) : (
-                        <span>Pick a date</span>
+                        <span className="min-w-50 max-w-max truncate text-ellipsis text-left font-medium bg-blue-50 text-secondary">
+                          Pick a date
+                        </span>
                       )}
                     </Button>
                   </DialogTrigger>

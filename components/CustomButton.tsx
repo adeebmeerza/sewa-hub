@@ -16,7 +16,7 @@ const CustomButton = ({
   return (
     <Button
       variant={variant}
-      className={cn("p-4 min-h-12", className)}
+      className={cn("px-5 py-4 min-h-8", className)}
       {...props}
     >
       {icon && <span>{icon}</span>}

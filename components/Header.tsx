@@ -9,19 +9,25 @@ const raleway = Raleway({
   subsets: ["latin"],
 });
 
-const Header = () => {
+interface Props {
+  withSearchBox?: boolean;
+}
+
+const Header = ({ withSearchBox = false }: Props) => {
   return (
-    <div className="bg-secondary">
-      <div className="container mx-auto flex flex-row gap-8 justify-between items-start p-4">
+    <div className="bg-transparent">
+      <div className="container mx-auto flex flex-row gap-8 justify-between items-center">
         <div
-          className={`${raleway.className} text-3xl text-wrap font-bold text-primary-foreground my-4`}
+          className={`${raleway.className} text-3xl text-wrap font-bold text-blue-100 my-4`}
         >
           Sewa Hub
         </div>
-        <SearchBox />
+        {withSearchBox && <SearchBox />}
         <div className="flex items-center gap-2">
-          <CustomButton variant="outline">Login / Sign up</CustomButton>
-          <CustomButton icon={<Plus />}>Create listing</CustomButton>
+          <CustomButton variant="link" className="text-primary-foreground">
+            Renter Hub
+          </CustomButton>
+          <CustomButton>My account</CustomButton>
         </div>
       </div>
     </div>
