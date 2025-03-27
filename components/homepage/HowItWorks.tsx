@@ -12,7 +12,7 @@ const HowItWorks = () => {
               alt={"Search"}
               width={80}
               height={120}
-              objectFit="contain "
+              className="object-contain"
             />
             <div>
               <h3>1. Browse Items</h3>
@@ -25,7 +25,7 @@ const HowItWorks = () => {
               alt={"Booking item"}
               width={100}
               height={50}
-              objectFit="contain"
+              className="object-contain"
             />
             <div>
               <h3>2. Book & Pay</h3>
@@ -38,7 +38,7 @@ const HowItWorks = () => {
               alt={"Pickup item"}
               width={100}
               height={50}
-              objectFit="contain"
+              className="object-contain"
             />
             <div>
               <h3>3. Pickup or Delivery</h3>
@@ -51,7 +51,7 @@ const HowItWorks = () => {
               alt={"Return item"}
               width={100}
               height={50}
-              objectFit="contain"
+              className="object-contain"
             />
             <div>
               <h3>4. Return It</h3>

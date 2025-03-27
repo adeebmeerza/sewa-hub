@@ -1,5 +1,5 @@
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
+import Hero from "@/components/homepage/Hero";
 import BrowseByCategory from "@/components/homepage/BrowseByCategory";
 import CustomerAssurance from "@/components/homepage/CustomerAssurance";
 import HowItWorks from "@/components/homepage/HowItWorks";
@@ -18,7 +18,7 @@ export default function Home() {
         }}
       />
 
-      <div id="container" className="container mx-auto px-52">
+      <main id="container" className="container mx-auto px-52">
         <Header />
 
         <Hero />
@@ -34,7 +34,7 @@ export default function Home() {
         <CustomerAssurance />
 
         <LenderCTA />
-      </div>
+      </main>
     </div>
   );
 }

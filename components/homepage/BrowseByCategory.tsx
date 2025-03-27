@@ -1,5 +1,4 @@
-import Image from "next/image";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { Card, CardHeader, CardTitle } from "../ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -8,12 +7,7 @@ import {
   CarouselPrevious,
 } from "../ui/carousel";
 import Link from "next/link";
-import { RENTAL_CATEGORIES } from "@/lib/rentalCategories";
-
-interface Category {
-  img: string;
-  name: string;
-}
+import RENTAL_CATEGORIES from "@/constants/rentalCategories";
 
 const BrowseByCategory = () => {
   const categories = RENTAL_CATEGORIES;

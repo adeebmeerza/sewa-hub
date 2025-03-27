@@ -43,6 +43,7 @@ export default async function dbConnect() {
     throw e;
   }
 
+  console.log("Database connected");
   return cached.conn;
 }
 
@@ -52,9 +53,12 @@ export async function dbDisconnect() {
       await cached.conn.disconnect();
       cached.conn = null;
       cached.promise = null;
+      console.log("Database disconnected");
     }
   } catch (error) {
     console.error("Error disconnecting from MongoDB:", error);
     throw error;
   }
 }
+
+dbDisconnect();
