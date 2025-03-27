@@ -1,16 +1,22 @@
 import mongoose from "mongoose";
 
 declare global {
-  var mongoose: any; // This must be a `var` and not a `let / const`
+  // eslint-disable-next-line no-var
+  var mongoose: MongooseCache | undefined; // This must be a `var` and not a `let / const`
 }
 
-let cached = global.mongoose;
+type MongooseCache = {
+  conn: typeof mongoose | null;
+  promise: Promise<typeof mongoose> | null;
+};
+
+let cached: MongooseCache = global.mongoose as unknown as MongooseCache;
 
 if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null };
+  cached = global.mongoose = { conn: null, promise: null } as MongooseCache;
 }
 
-async function dbConnect() {
+export default async function dbConnect() {
   const MONGODB_URI = process.env.MONGODB_URI!;
 
   if (!MONGODB_URI) {
@@ -40,4 +46,15 @@ async function dbConnect() {
   return cached.conn;
 }
 
-export default dbConnect;
+export async function dbDisconnect() {
+  try {
+    if (cached.conn) {
+      await cached.conn.disconnect();
+      cached.conn = null;
+      cached.promise = null;
+    }
+  } catch (error) {
+    console.error("Error disconnecting from MongoDB:", error);
+    throw error;
+  }
+}
