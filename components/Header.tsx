@@ -1,8 +1,9 @@
 import { Raleway } from "next/font/google";
 import React from "react";
-import { Plus } from "lucide-react";
 import SearchBox from "./SearchBox";
 import CustomButton from "./CustomButton";
+
+import AuthButton from "./auth/auth-button";
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -18,16 +19,16 @@ const Header = ({ withSearchBox = false }: Props) => {
     <div className="bg-transparent">
       <div className="container mx-auto flex flex-row gap-8 justify-between items-center">
         <div
-          className={`${raleway.className} text-3xl text-wrap font-bold text-blue-100 my-4`}
+          className={`${raleway.className} text-2xl md:text-3xl text-nowrap font-extrabold text-blue-200 my-4`}
         >
           Sewa Hub
         </div>
         {withSearchBox && <SearchBox />}
         <div className="flex items-center gap-2">
-          <CustomButton variant="link" className="text-primary-foreground">
+          <CustomButton variant="default" className="hidden sm:inline-flex">
             Renter Hub
           </CustomButton>
-          <CustomButton>My account</CustomButton>
+          <AuthButton variant="default">Login/Signup</AuthButton>
         </div>
       </div>
     </div>

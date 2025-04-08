@@ -11,12 +11,17 @@ const CustomButton = ({
   className,
   icon,
   children,
+  type,
   ...props
 }: Props) => {
   return (
     <Button
+      type={type}
       variant={variant}
-      className={cn("px-5 py-4 min-h-8", className)}
+      className={cn(
+        "text-[13px] sm:text-sm font-medium tracking-wide",
+        className
+      )}
       {...props}
     >
       {icon && <span>{icon}</span>}

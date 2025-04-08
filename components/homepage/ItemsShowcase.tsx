@@ -33,12 +33,12 @@ const items = [
     name: "Sheila Majid Vinyl Lagenda (Japan Recording)",
     thumbnail: "/products/insta360.png",
     reviews: {
-      rating: 4.8,
-      count: 2,
+      rating: 4.2,
+      count: 7,
     },
     owner: {
       avatarImg: "/avatar.jpg",
-      name: "Syafiq Syahmi",
+      name: "Amirul",
       verified: true,
     },
     location: "Cyberjaya",
@@ -52,12 +52,12 @@ const items = [
     name: "Sheila Majid Vinyl Lagenda (Japan Recording)",
     thumbnail: "/products/insta360.png",
     reviews: {
-      rating: 4.8,
-      count: 2,
+      rating: 2.1,
+      count: 10,
     },
     owner: {
       avatarImg: "/avatar.jpg",
-      name: "Syafiq Syahmi",
+      name: "Irfan",
       verified: true,
     },
     location: "Cyberjaya",
@@ -71,8 +71,8 @@ const items = [
     name: "Sheila Majid Vinyl Lagenda (Japan Recording)",
     thumbnail: "/products/insta360.png",
     reviews: {
-      rating: 4.8,
-      count: 2,
+      rating: 3,
+      count: 8,
     },
     owner: {
       avatarImg: "/avatar.jpg",
@@ -90,8 +90,8 @@ const items = [
     name: "Sheila Majid Vinyl Lagenda (Japan Recording)",
     thumbnail: "/products/insta360.png",
     reviews: {
-      rating: 4.8,
-      count: 2,
+      rating: 3.9,
+      count: 20,
     },
     owner: {
       avatarImg: "/avatar.jpg",
@@ -109,8 +109,8 @@ const items = [
     name: "Sheila Majid Vinyl Lagenda (Japan Recording)",
     thumbnail: "/products/insta360.png",
     reviews: {
-      rating: 4.8,
-      count: 2,
+      rating: 4.0,
+      count: 5,
     },
     owner: {
       avatarImg: "/avatar.jpg",

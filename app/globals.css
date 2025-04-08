@@ -65,8 +65,8 @@
   --secondary-foreground: oklch(0.942 0.027 265.8);
   --muted: oklch(0.968 0.007 247.896);
   --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.447 0.174 0.2);
-  --accent-foreground: oklch(0.942 0.032 0.2);
+  --accent: oklch(0.967 0.003 264.542);
+  --accent-foreground: oklch(0.21 0.034 264.665);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
   --border: oklch(0.929 0.013 255.508);
@@ -133,29 +133,45 @@
   h1,
   h2,
   h3,
-  h4,
-  h5,
-  h6 {
+  h4 {
     @apply font-montserrat;
   }
   h1 {
-    @apply font-bold text-2xl;
+    @apply scroll-m-20 text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight;
   }
   h2 {
-    @apply font-semibold text-xl capitalize;
+    @apply scroll-m-20 text-2xl lg:text-3xl font-semibold tracking-tight first:mt-0;
   }
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-medium;
+  h3 {
+    @apply scroll-m-20 text-2xl font-semibold tracking-tight;
+  }
+  h4 {
+    @apply scroll-m-20 text-xl font-semibold tracking-tight;
+  }
+  p {
+    @apply text-[14px] sm:text-base leading-5 sm:leading-7 [&:not(:first-child)]:mt-1 sm:[&:not(:first-child)]:mt-2;
   }
   section {
-    @apply my-18;
+    @apply my-8 md:my-12 lg:my-18;
+  }
+  ul {
+    @apply my-6 ml-6 list-disc [&>li]:mt-2;
+  }
+  small {
+    @apply text-sm font-medium leading-none;
+  }
+  main {
+    @apply container mx-auto px-4 md:px-16 lg:px-40 xl:px-52;
   }
 }
 
 @layer utilities {
+  .large {
+    @apply text-lg font-semibold;
+  }
+  .muted {
+    @apply text-sm text-muted-foreground;
+  }
   .bg-wavy {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -20 100 80'%3E%3Cpath d='M0 10 Q 25 0, 50 10 T 100 10' fill='transparent' stroke='gray' stroke-dasharray='7,8' stroke-width='0.8'/%3E%3C/svg%3E");
     background-repeat: repeat-x;

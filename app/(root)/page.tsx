@@ -11,14 +11,14 @@ export default function Home() {
     <div id="homepage" className="relative">
       {/* Blue background div that extends to half of the search box */}
       <div
-        className="absolute top-0 left-0 w-full bg-secondary"
+        className="absolute top-0 left-0 w-full bg-primary"
         style={{
           height: "308px",
           zIndex: -1,
         }}
       />
 
-      <main id="container" className="container mx-auto px-52">
+      <main id="container">
         <Header />
 
         <Hero />
@@ -29,7 +29,7 @@ export default function Home() {
 
         <BrowseByCategory />
 
-        {/* <div>Popular Rentals</div> */}
+        <div>Popular Rentals</div>
 
         <CustomerAssurance />
 
