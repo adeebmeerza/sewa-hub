@@ -4,7 +4,7 @@ const HowItWorks = () => {
   return (
     <section>
       <h2>Simple & Secure Rentals</h2>
-      <div className="bg-wavy z-10">
+      <div>
         <ol className="renting-steps my-4">
           <li>
             <Image

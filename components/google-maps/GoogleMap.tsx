@@ -1,9 +1,9 @@
 "use client";
 
 import { Map, useMap, useMapsLibrary } from "@vis.gl/react-google-maps";
-import { Button } from "../ui/button";
 import { MapPin } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
+import { IPin } from "../search-box/location-picker";
 
 // Peninsular Malaysia
 export const INITIAL_CENTER = {
@@ -11,24 +11,7 @@ export const INITIAL_CENTER = {
   lng: 101.703651,
 };
 
-interface GoogleMapProps {
-  location: {
-    address: string;
-    center: {
-      lat: number;
-      lng: number;
-    } | null;
-  };
-  setLocation: (location: {
-    address: string;
-    center: {
-      lat: number;
-      lng: number;
-    } | null;
-  }) => void;
-}
-
-const GoogleMap: React.FC<GoogleMapProps> = ({ location, setLocation }) => {
+const GoogleMap = ({ pin, setPin }: IPin) => {
   const map = useMap();
   const [zoom, setZoom] = useState<number | null>(14);
 
@@ -48,38 +31,44 @@ const GoogleMap: React.FC<GoogleMapProps> = ({ location, setLocation }) => {
       return;
     }
 
-    if (!location.center) return;
+    if (!pin.center) return;
 
-    console.log("geocoding location:", location);
+    console.log("geocoding location:", pin.center);
 
     geocoderService.geocode(
       {
-        location: location.center,
+        location: pin.center,
       },
       (result: google.maps.GeocoderResult[] | null, status) => {
         if (status === "OK" && result?.[0]) {
-          setLocation({ ...location, address: result[0].formatted_address });
+          setPin({
+            ...pin,
+            address: result[0].formatted_address,
+          });
         } else {
           console.error("Error during geocoding: Failed ", status);
         }
       }
     );
-  }, [geocoderService, location, setLocation]);
+  }, [geocoderService, pin]);
 
   useEffect(() => {
-    if (geocoderService && location.center) {
+    if (geocoderService && pin.center) {
       reverseGeocode();
     }
-  }, [geocoderService, location.center]);
+  }, [geocoderService, pin.center]);
 
   return (
-    <div className="relative w-full h-full shadow">
+    <div className="relative w-full h-full drop-shadow-md">
       <Map
         defaultCenter={INITIAL_CENTER}
-        center={location.center}
+        center={pin.center}
         zoom={zoom}
         onDragstart={() => {
-          setLocation({ ...location, center: null });
+          setPin({
+            ...pin,
+            center: null,
+          });
           setZoom(null);
         }}
         onDragend={() => {
@@ -91,7 +80,10 @@ const GoogleMap: React.FC<GoogleMapProps> = ({ location, setLocation }) => {
           const lat = newCenter.lat();
           const lng = newCenter.lng();
 
-          setLocation({ ...location, center: { lat, lng } });
+          setPin({
+            ...pin,
+            center: { lat, lng },
+          });
 
           const newZoom = map.getZoom();
           if (newZoom) {
@@ -106,8 +98,8 @@ const GoogleMap: React.FC<GoogleMapProps> = ({ location, setLocation }) => {
         fullscreenControl={false}
       />
 
-      <div className="bg-accent/20 absolute top-1/2 left-1/2 -translate-1/2 w-14 h-14 outline-1 outline-accent rounded-full flex items-center justify-center">
-        <MapPin size={"lg"} className="stroke-accent w-7 h-7" />
+      <div className="bg-secondary/10 absolute top-1/2 left-1/2 -translate-1/2 w-14 h-14 outline-1 outline-secondary rounded-full flex items-center justify-center">
+        <MapPin size={"lg"} className="stroke-secondary w-7 h-7" />
       </div>
     </div>
   );

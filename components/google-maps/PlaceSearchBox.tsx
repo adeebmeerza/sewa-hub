@@ -14,30 +14,11 @@ import FindMe from "./FindMe";
 import { Button } from "../ui/button";
 import { CommandEmpty } from "cmdk";
 import { cn } from "@/lib/utils";
+import { IPin } from "../search-box/location-picker";
 
-const PlaceSearchBox = ({
-  input,
-  setInput,
-  location,
-  setLocation,
-}: {
-  input: string;
-  setInput: (input: string) => void;
-  location: {
-    address: string;
-    center: {
-      lat: number;
-      lng: number;
-    } | null;
-  };
-  setLocation: (location: {
-    address: string;
-    center: {
-      lat: number;
-      lng: number;
-    } | null;
-  }) => void;
-}) => {
+const PlaceSearchBox = ({ setPin }: IPin) => {
+  const [input, setInput] = useState<string>("");
+
   const map = useMap();
   const placesLibrary = useMapsLibrary("places");
 
@@ -178,7 +159,10 @@ const PlaceSearchBox = ({
     coord: { lat: number; lng: number }
   ) {
     setInput(placeDescription);
-    setLocation({ ...location, center: coord });
+    setPin({
+      address: placeDescription,
+      center: coord,
+    });
     setIsOpenCommandList(false);
     setPredictions([]);
   }
@@ -189,7 +173,7 @@ const PlaceSearchBox = ({
     "text-md font-light mb-1 data-[selected=true]:bg-blue-200 data-[selected=true]:text-primary rounded-none";
 
   return (
-    <div className="relative w-full mb-4 border-red-500" ref={containerRef}>
+    <div className="relative w-full" ref={containerRef}>
       <Command className="w-full">
         <div className="relative">
           <CommandInput
@@ -214,7 +198,7 @@ const PlaceSearchBox = ({
               <X className="h-4 w-4" />
             </Button>
           ) : (
-            <FindMe location={location} setLocation={setLocation} />
+            <FindMe />
           )}
         </div>
 

@@ -4,6 +4,7 @@ import SearchBox from "./SearchBox";
 import CustomButton from "./CustomButton";
 
 import AuthButton from "./auth/auth-button";
+import { SearchProvider } from "@/app/contexts/search-context";
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -23,12 +24,21 @@ const Header = ({ withSearchBox = false }: Props) => {
         >
           Sewa Hub
         </div>
-        {withSearchBox && <SearchBox />}
+        {withSearchBox && (
+          <SearchProvider>
+            <SearchBox />
+          </SearchProvider>
+        )}
         <div className="flex items-center gap-2">
-          <CustomButton variant="default" className="hidden sm:inline-flex">
+          <CustomButton
+            variant="default"
+            className="hidden sm:inline-flex hover:bg-blue-200/10"
+          >
             Renter Hub
           </CustomButton>
-          <AuthButton variant="default">Login/Signup</AuthButton>
+          <AuthButton variant="default" className="hover:bg-blue-200/10">
+            Login/Signup
+          </AuthButton>
         </div>
       </div>
     </div>

@@ -23,8 +23,7 @@ import {
 } from "./drawer";
 
 const GlobalDialog = () => {
-  const { isOpen, closeDialog, dialogContent } = useUI();
-  const isDesktop = useMediaQuery("(min-width: 768px)");
+  const { isOpen, closeDialog, dialogContent, isDesktop } = useUI();
 
   const handleClose = useCallback(() => {
     dialogContent?.onClose?.();
@@ -55,7 +54,7 @@ const GlobalDialog = () => {
   if (isDesktop) {
     return (
       <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()}>
-        <DialogContent className="sm:max-w-[425px] pt-2">
+        <DialogContent className="sm:max-w-[425px] lg:max-w-[500px] pt-2 gap-2">
           <div className="flex flex-row-reverse items-center justify-between text-gray-600 py-1 relative">
             <DialogClose asChild>
               <Button
@@ -84,7 +83,7 @@ const GlobalDialog = () => {
             <DialogTitle className="text-2xl font-bold">
               {dialogContent.title}
             </DialogTitle>
-            <DialogDescription className="text-base">
+            <DialogDescription className="text-base mt-0">
               {dialogContent.description}
             </DialogDescription>
           </DialogHeader>
@@ -127,10 +126,10 @@ const GlobalDialog = () => {
 
         <div className="px-6 overflow-y-scroll">
           <DrawerHeader className="p-0 my-2">
-            <DrawerTitle>{dialogContent.title}</DrawerTitle>
+            <DrawerTitle className="text-xl">{dialogContent.title}</DrawerTitle>
             <DrawerDescription>{dialogContent.description}</DrawerDescription>
           </DrawerHeader>
-          <div className="overflow-y-scroll">{dialogContent.content}</div>
+          <div className="">{dialogContent.content}</div>
         </div>
       </DrawerContent>
     </Drawer>

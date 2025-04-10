@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, ReactNode, useContext, useState } from "react";
+import useMediaQuery from "../hooks/use-media-query";
 
 type DialogContent = {
   title: string;
@@ -16,6 +17,7 @@ interface UIContextType {
   openDialog: (content: DialogContent) => void;
   closeDialog: () => void;
   dialogContent: DialogContent | null;
+  isDesktop: boolean;
 }
 
 const UIContext = createContext<UIContextType | undefined>(undefined);
@@ -38,9 +40,11 @@ export function UIProvider({ children }: { children: ReactNode }) {
     }, 3000);
   };
 
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+
   return (
     <UIContext.Provider
-      value={{ isOpen, openDialog, closeDialog, dialogContent }}
+      value={{ isOpen, openDialog, closeDialog, dialogContent, isDesktop }}
     >
       {children}
     </UIContext.Provider>

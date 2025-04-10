@@ -1,14 +1,6 @@
-import { BadgeCheck, CircleCheck, MapPin, Star } from "lucide-react";
+import { BadgeCheck, MapPin, Star } from "lucide-react";
 import Image from "next/image";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "./ui/card";
-import { cn } from "@/lib/utils";
-import { Button } from "./ui/button";
+import { Card, CardContent, CardFooter, CardTitle } from "./ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import Link from "next/link";
 
@@ -51,12 +43,12 @@ const ItemCard = ({
           />
         </div>
 
-        <CardContent className="px-4 my-4 space-y-1">
-          <CardTitle className="font-medium leading-5 line-clamp-2 text-gray-800 mb-2">
+        <CardContent className="px-4 my-4">
+          <CardTitle className="font-medium leading-5 line-clamp-2 text-gray-800 mb-1 sm:mb-2 text-sm">
             {name}
           </CardTitle>
 
-          <div className="text-sm font-normal space-y-1">
+          <div className="text-xs sm:text-sm font-normal space-y-2 sm:space-y-1">
             {/* Rating */}
             <div className="flex items-center gap-1">
               <span className="flex items-center gap-1">
@@ -83,26 +75,30 @@ const ItemCard = ({
               <span className="text-sm">({reviews.count})</span>
             </div>
 
-            <div className="location flex items-center">
-              <MapPin size={12} className=" mr-1 h-4 w-4" />
-              <span>{location}</span>
-            </div>
+            <div className="flex flex-row sm:flex-col gap-2 sm:gap-1">
+              <div className="flex items-center">
+                <MapPin size={12} className=" mr-1 h-4 w-4" />
+                <span>{location}</span>
+              </div>
 
-            <div className="owner-info flex flex-row items-center gap-1">
-              <Avatar className="h-4 w-4">
-                <AvatarImage
-                  src={owner.avatarImg}
-                  alt={"Avatar"}
-                  className="rounded-full"
-                />
-                <AvatarFallback>{owner.name.charAt(0)}</AvatarFallback>
-              </Avatar>
-              <span>{owner.name}</span>
-              <span>
-                {owner.verified && (
-                  <BadgeCheck size={14} className="inline-block" />
-                )}
-              </span>
+              <span className="inline sm:hidden text-xs text-gray-300">•</span>
+
+              <div className="owner-info flex flex-row items-center gap-1">
+                <Avatar className="h-4 w-4">
+                  <AvatarImage
+                    src={owner.avatarImg}
+                    alt={"Avatar"}
+                    className="rounded-full"
+                  />
+                  <AvatarFallback>{owner.name.charAt(0)}</AvatarFallback>
+                </Avatar>
+                <span>{owner.name}</span>
+                <span>
+                  {owner.verified && (
+                    <BadgeCheck size={14} className="inline-block" />
+                  )}
+                </span>
+              </div>
             </div>
           </div>
         </CardContent>

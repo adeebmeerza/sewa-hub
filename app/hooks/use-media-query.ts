@@ -13,7 +13,6 @@ const UseMediaQuery = (query: string): boolean => {
     // Define a callback function to handle changes
     const listener = (e: MediaQueryListEvent) => {
       setMatches(e.matches);
-      console.log(e.matches);
     };
 
     // Add the callback as a listener for changes to the media query

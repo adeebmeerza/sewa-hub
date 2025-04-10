@@ -1,12 +1,8 @@
+"use client";
+
 import ItemCard from "../ItemCard";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "../ui/carousel";
 import { Button } from "../ui/button";
+import CustomCarousel from "../ui/reusable/custom-carousel";
 
 const items = [
   {
@@ -130,22 +126,16 @@ const ItemsShowcase = () => {
     <section id="items-showcase" className="relative">
       <div className="flex justify-between">
         <h2>Rent anytime, anywhere</h2>
-        <Button variant="outline">View all</Button>
+        <Button variant="outline" className="hidden sm:inline-flex">
+          View all
+        </Button>
       </div>
 
-      <Carousel opts={{ align: "start" }}>
-        <CarouselPrevious />
-        <CarouselNext />
-        <CarouselContent className="my-4">
-          {items.map((item) => (
-            <CarouselItem key={item.id} className="basis-1/4">
-              {/* <Link href={""}> */}
-              <ItemCard {...item} />
-              {/* </Link> */}
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-      </Carousel>
+      <CustomCarousel
+        items={items}
+        renderItem={(item) => <ItemCard {...item} />}
+        itemClassName="basis-1/1 sm:basis-1/3 lg:basis-1/4"
+      />
     </section>
   );
 };

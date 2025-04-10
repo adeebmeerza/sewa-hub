@@ -1,21 +1,37 @@
+"use client";
+
 import { Card, CardHeader, CardTitle } from "../ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "../ui/carousel";
 import Link from "next/link";
 import RENTAL_CATEGORIES from "@/constants/rentalCategories";
+import CustomCarousel from "../ui/reusable/custom-carousel";
+
+const CategoryCard = ({
+  slug,
+  icon,
+  name,
+}: {
+  slug: string;
+  icon: string;
+  name: string;
+}) => {
+  return (
+    <Link href={`/products/${slug}`}>
+      <Card className="rounded-none py-0 gap-0 my-2 sm:my-4 h-[90px] sm:h-[110px] place-content-center">
+        <div>
+          <div className="text-center text-2xl sm:text-3xl sm:mb-2">{icon}</div>
+          <CardHeader className="px-2">
+            <CardTitle className="font-normal text-center text-[0.76rem] leading-4 font-montserrat">
+              {name}
+            </CardTitle>
+          </CardHeader>
+        </div>
+      </Card>
+    </Link>
+  );
+};
 
 const BrowseByCategory = () => {
   const categories = RENTAL_CATEGORIES;
-
-  const decker = [];
-  for (let i = 0; i < categories.length; i += 2) {
-    decker.push(categories.slice(i, i + 1));
-  }
 
   return (
     <section id="browse-by-categories">
@@ -23,30 +39,23 @@ const BrowseByCategory = () => {
         <h2>Browse by category</h2>
       </div>
 
-      {/* Category Carousel */}
-      <Carousel orientation="horizontal" opts={{ align: "start" }}>
-        <CarouselPrevious />
-        <CarouselNext />
-
-        <CarouselContent>
-          {Array.from({ length: Math.ceil(categories.length / 2) }, (_, i) => (
-            <CarouselItem key={i} className="basis-1/6">
-              {categories.slice(i * 2, i * 2 + 2).map((category, index) => (
-                <Link key={index} href={`/products/${category.slug}`}>
-                  <Card className="rounded-none py-0 gap-2 my-4 h-[110px] place-content-center">
-                    <div className="text-center text-3xl">{category.icon}</div>
-                    <CardHeader className="px-2">
-                      <CardTitle className="font-normal text-center text-[0.85rem] leading-4 font-montserrat">
-                        {category.name}
-                      </CardTitle>
-                    </CardHeader>
-                  </Card>
-                </Link>
-              ))}
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-      </Carousel>
+      <CustomCarousel
+        items={Array.from({ length: Math.ceil(categories.length / 2) })}
+        renderItem={(_, i) =>
+          categories
+            .slice(i * 2, i * 2 + 2)
+            .map((category, index) => (
+              <CategoryCard
+                key={index}
+                slug={category.slug}
+                icon={category.icon}
+                name={category.name}
+              />
+            ))
+        }
+        itemClassName="basis-1/2 pl-4 sm:basis-1/5"
+        carouselOpts={{ slidesToScroll: 2 }}
+      />
     </section>
   );
 };

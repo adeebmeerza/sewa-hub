@@ -18,7 +18,7 @@ export default function Home() {
         }}
       />
 
-      <main id="container">
+      <main id="container" className="wrapper">
         <Header />
 
         <Hero />
@@ -29,7 +29,7 @@ export default function Home() {
 
         <BrowseByCategory />
 
-        <div>Popular Rentals</div>
+        {/* <div>Popular Rentals</div> */}
 
         <CustomerAssurance />
 

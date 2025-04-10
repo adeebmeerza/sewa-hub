@@ -140,13 +140,13 @@
     @apply scroll-m-20 text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight;
   }
   h2 {
-    @apply scroll-m-20 text-2xl lg:text-3xl font-semibold tracking-tight first:mt-0;
+    @apply scroll-m-20 text-xl lg:text-3xl font-semibold tracking-tight first:mt-0;
   }
   h3 {
-    @apply scroll-m-20 text-2xl font-semibold tracking-tight;
+    @apply scroll-m-20 text-lg font-semibold tracking-tight;
   }
   h4 {
-    @apply scroll-m-20 text-xl font-semibold tracking-tight;
+    @apply scroll-m-20 text-lg font-semibold tracking-tight;
   }
   p {
     @apply text-[14px] sm:text-base leading-5 sm:leading-7 [&:not(:first-child)]:mt-1 sm:[&:not(:first-child)]:mt-2;
@@ -160,9 +160,10 @@
   small {
     @apply text-sm font-medium leading-none;
   }
-  main {
+  /* main,
+  footer {
     @apply container mx-auto px-4 md:px-16 lg:px-40 xl:px-52;
-  }
+  } */
 }
 
 @layer utilities {
@@ -180,20 +181,44 @@
 }
 
 @layer components {
+  .wrapper {
+    @apply container mx-auto px-4 md:px-16 lg:px-40 xl:px-52;
+  }
+
   .form-item {
     @apply flex flex-row items-center gap-1;
   }
 
+  .search-input-wrapper {
+    @apply h-14 flex items-center px-4 rounded-md bg-blue-50 border border-blue-200 shadow-md text-base! text-primary focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive;
+  }
+
+  .search-input-button {
+    @apply w-full text-secondary text-sm sm:text-base font-medium gap-1 justify-start;
+  }
+
+  .search-input {
+    @apply text-blue-700/90;
+  }
+
   .renting-steps {
-    @apply grid grid-cols-4 gap-4 justify-between;
+    @apply grid grid-rows-2 grid-cols-2 sm:grid-rows-1 sm:grid-cols-4 gap-2 sm:justify-between;
   }
 
   .renting-steps li {
-    @apply m-4 rounded-xl text-center flex flex-col items-center justify-between gap-4 bg-white;
+    @apply rounded-xl text-center flex flex-col items-center bg-white;
+  }
+
+  .renting-steps img {
+    @apply aspect-square h-[70px] mb-3;
+  }
+
+  .renting-steps li h3 {
+    @apply text-[0.95rem];
   }
 
   .renting-steps li p {
-    @apply text-[0.875rem] font-normal font-montserrat;
+    @apply text-[0.8rem] font-normal font-montserrat text-gray-500;
   }
 
   .customer-assurance .side {
@@ -217,8 +242,7 @@
   }
 
   footer .about,
-  footer .terms,
-  footer .socialMedia {
+  footer .terms {
     @apply flex flex-col text-[0.8rem] text-gray-600 gap-1;
   }
 }

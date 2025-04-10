@@ -1,45 +1,12 @@
-"use client";
-
-import { useState } from "react";
 import PlaceSearchBox from "./PlaceSearchBox";
 import GoogleMap from "./GoogleMap";
+import { IPin } from "../search-box/location-picker";
 
-export interface PlaceSelect {
-  address: string;
-  lat: number;
-  lng: number;
-}
-
-const MapContainer = ({
-  location,
-  setLocation,
-}: {
-  location: {
-    address: string;
-    center: {
-      lat: number;
-      lng: number;
-    } | null;
-  };
-  setLocation: (location: {
-    address: string;
-    center: {
-      lat: number;
-      lng: number;
-    } | null;
-  }) => void;
-}) => {
-  const [input, setInput] = useState<string>("");
-
+const MapContainer = ({ pin, setPin }: IPin) => {
   return (
-    <div className="flex flex-col h-[450px] max-h-full">
-      <PlaceSearchBox
-        input={input}
-        setInput={setInput}
-        location={location}
-        setLocation={setLocation}
-      />
-      <GoogleMap location={location} setLocation={setLocation} />
+    <div className="flex flex-col w-full h-[50vh] gap-2">
+      <PlaceSearchBox pin={pin} setPin={setPin} />
+      <GoogleMap pin={pin} setPin={setPin} />
     </div>
   );
 };

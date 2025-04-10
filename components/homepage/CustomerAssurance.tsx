@@ -32,19 +32,17 @@ const CustomerAssurance = () => {
     <section className="customer-assurance">
       <h2>Why Rent with Us?</h2>
 
-      <ol className="grid grid-cols-4">
+      <ol className="grid grid-rows-4 sm:grid-rows-2 sm:grid-cols-2 gap-4 sm:gap-4 my-4">
         {sellingPoints.map((point, index) => (
           <li
             key={index}
-            className="border border-gray-300 rounded-lg p-8 my-4 flex flex-col gap-6"
+            className="border border-gray-300 rounded-lg p-6 my-0 flex flex-col"
           >
-            <div className="rounded-full bg-secondary/10 h-16 w-16 text-5xl grid place-items-center">
+            <div className="rounded-full bg-secondary/10 w-16 text-5xl grid place-items-center mb-3">
               {point.icon}
             </div>
-            <h3 className="font-semibold font-inter text-xl min-h-[60px]">
-              {point.title}
-            </h3>
-            <p className="text-gray-600 flex-grow">{point.description}</p>
+            <h3 className="font-semibold font-inter my-2">{point.title}</h3>
+            <p className="text-gray-600">{point.description}</p>
           </li>
         ))}
       </ol>

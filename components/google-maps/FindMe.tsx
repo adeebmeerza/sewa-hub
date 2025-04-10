@@ -4,26 +4,14 @@ import { useState } from "react";
 import { Locate } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "../ui/button";
+import { useSearch } from "@/app/contexts/search-context";
 
-const FindMe = ({
-  location,
-  setLocation,
-}: {
-  location: {
-    address: string;
-    center: {
-      lat: number;
-      lng: number;
-    } | null;
-  };
-  setLocation: (location: {
-    address: string;
-    center: {
-      lat: number;
-      lng: number;
-    } | null;
-  }) => void;
-}) => {
+const FindMe = () => {
+  const {
+    search: { location },
+    setSearch,
+  } = useSearch();
+
   const [loading, setLoading] = useState<boolean>(false);
 
   function fetchUserLocation() {
@@ -41,7 +29,9 @@ const FindMe = ({
       lng: position.coords.longitude,
     };
 
-    setLocation({ ...location, center: coord });
+    setSearch({
+      location: { ...location, center: coord },
+    });
     setLoading(false);
   }
 
