@@ -123,7 +123,7 @@ const items = [
 
 const ItemsShowcase = () => {
   return (
-    <section id="items-showcase" className="relative">
+    <section id="items-showcase" className="wrapper relative">
       <div className="flex justify-between">
         <h2>Rent anytime, anywhere</h2>
         <Button variant="outline" className="hidden sm:inline-flex">

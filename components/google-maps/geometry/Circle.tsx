@@ -1,6 +1,5 @@
 "use client";
 
-/* eslint-disable complexity */
 import {
   forwardRef,
   useContext,
@@ -63,11 +62,13 @@ function useCircle(props: CircleProps) {
   useEffect(() => {
     if (!center) return;
     if (!latLngEquals(center, circle.getCenter())) circle.setCenter(center);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [center]);
 
   useEffect(() => {
     if (radius === undefined || radius === null) return;
     if (radius !== circle.getRadius()) circle.setRadius(radius);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [radius]);
 
   const map = useContext(GoogleMapsContext)?.map;
@@ -86,6 +87,7 @@ function useCircle(props: CircleProps) {
     return () => {
       circle.setMap(null);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [map]);
 
   // attach and re-attach event-handlers when any of the properties change

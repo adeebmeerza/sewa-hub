@@ -105,7 +105,11 @@ export function useAuthController() {
     });
   };
 
-  const handleLoginSuccess = (userData: any) => {
+  const handleLoginSuccess = (userData: {
+    id: string;
+    name: string;
+    email: string;
+  }) => {
     openDialog({
       title: "Welcome Back!",
       content: (

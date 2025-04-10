@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -36,7 +35,7 @@ interface ResetPasswordFormProps {
 }
 
 export function ResetPasswordForm({
-  token,
+  // token,
   onSuccess,
 }: ResetPasswordFormProps) {
   const [isLoading, setIsLoading] = useState(false);
@@ -50,6 +49,7 @@ export function ResetPasswordForm({
     },
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async function onSubmit(data: ResetPasswordFormValues) {
     setIsLoading(true);
     setError(null);
@@ -64,6 +64,7 @@ export function ResetPasswordForm({
       onSuccess();
     } catch (err) {
       setError("An error occurred. Please try again.");
+      console.log(err);
     } finally {
       setIsLoading(false);
     }

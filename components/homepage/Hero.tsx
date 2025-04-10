@@ -4,16 +4,17 @@ import { SearchProvider } from "@/app/contexts/search-context";
 
 const Hero = () => {
   return (
-    <section id="hero">
-      <div id="heading" className="mb-4 md:mb-6 text-left text-white">
-        {/* <h1 className="text-5xl font-montserrat leading-16 font-extrabold"> */}
-        <h1>Find item to rent</h1>
-        <p>Rent what you need, when you need</p>
-      </div>
+    <section className="wrapper my-0 py-8">
+      <div>
+        <div id="heading" className="pb-4 pd:mb-6 text-left text-white">
+          <h1>Find item to rent</h1>
+          <p>Rent what you need, when you need</p>
+        </div>
 
-      <SearchProvider>
-        <SearchBox />
-      </SearchProvider>
+        <SearchProvider>
+          <SearchBox />
+        </SearchProvider>
+      </div>
     </section>
   );
 };

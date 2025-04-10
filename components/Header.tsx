@@ -17,7 +17,7 @@ interface Props {
 
 const Header = ({ withSearchBox = false }: Props) => {
   return (
-    <div className="bg-transparent">
+    <div className="wrapper">
       <div className="container mx-auto flex flex-row gap-8 justify-between items-center">
         <div
           className={`${raleway.className} text-2xl md:text-3xl text-nowrap font-extrabold text-blue-200 my-4`}

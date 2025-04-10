@@ -63,6 +63,7 @@ const SignUpForm = ({ onSuccess }: SignUpFormProps) => {
       onSuccess(data.email, "email");
     } catch (err) {
       setError("An error occurred during registration. Please try again.");
+      console.log(err);
     } finally {
       setIsLoading(false);
     }

@@ -10,18 +10,20 @@ export default function Home() {
   return (
     <div id="homepage" className="relative">
       {/* Blue background div that extends to half of the search box */}
-      <div
+      {/* <div
         className="absolute top-0 left-0 w-full bg-primary"
         style={{
-          height: "308px",
+          height: "400px",
           zIndex: -1,
         }}
-      />
+      /> */}
 
-      <main id="container" className="wrapper">
-        <Header />
+      <main id="container">
+        <div className="bg-primary w-full">
+          <Header />
 
-        <Hero />
+          <Hero />
+        </div>
 
         <ItemsShowcase />
 

@@ -48,6 +48,7 @@ const ForgotPasswordForm = ({ onSuccess }: ForgotPasswordFormProps) => {
       onSuccess(data.email);
     } catch (error) {
       setError("An error occurred. Please try again.");
+      console.log(error);
     } finally {
       setIsLoading(false);
     }

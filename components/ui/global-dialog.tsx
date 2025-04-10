@@ -1,7 +1,6 @@
 "use client";
 
 import { useUI } from "@/app/contexts/ui-context";
-import useMediaQuery from "@/app/hooks/use-media-query";
 import React, { useCallback, useEffect } from "react";
 import {
   Dialog,

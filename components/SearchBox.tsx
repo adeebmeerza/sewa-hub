@@ -13,23 +13,9 @@ import {
   FormLabel,
 } from "@/components/ui/form";
 import CustomButton from "./CustomButton";
-import {
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "./ui/dialog";
 
 import { CalendarIcon, MapPin, Search } from "lucide-react";
-import React, { useState } from "react";
-import { INITIAL_CENTER } from "./google-maps/GoogleMap";
-import { Button, buttonVariants } from "./ui/button";
-import { cn } from "@/lib/utils";
-import { addDays, format } from "date-fns";
-import { Calendar } from "@/components/ui/calendar";
-import { useUI } from "@/app/contexts/ui-context";
+import React from "react";
 import LocationPickerButton from "./search-box/location-picker-button";
 import { useSearch } from "@/app/contexts/search-context";
 import RentalPeriodButton from "./search-box/rental-period-button";

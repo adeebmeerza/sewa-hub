@@ -92,7 +92,7 @@ const ItemCard = ({
                   />
                   <AvatarFallback>{owner.name.charAt(0)}</AvatarFallback>
                 </Avatar>
-                <span>{owner.name}</span>
+                <span className="truncate text-ellipsis">{owner.name}</span>
                 <span>
                   {owner.verified && (
                     <BadgeCheck size={14} className="inline-block" />

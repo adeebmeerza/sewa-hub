@@ -29,7 +29,7 @@ const sellingPoints = [
 
 const CustomerAssurance = () => {
   return (
-    <section className="customer-assurance">
+    <section className="customer-assurance wrapper">
       <h2>Why Rent with Us?</h2>
 
       <ol className="grid grid-rows-4 sm:grid-rows-2 sm:grid-cols-2 gap-4 sm:gap-4 my-4">

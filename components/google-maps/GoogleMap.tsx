@@ -50,12 +50,14 @@ const GoogleMap = ({ pin, setPin }: IPin) => {
         }
       }
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [geocoderService, pin]);
 
   useEffect(() => {
     if (geocoderService && pin.center) {
       reverseGeocode();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [geocoderService, pin.center]);
 
   return (

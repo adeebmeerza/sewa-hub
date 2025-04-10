@@ -214,11 +214,11 @@
   }
 
   .renting-steps li h3 {
-    @apply text-[0.95rem];
+    @apply text-[0.97rem] sm:h-12 lg:h-6;
   }
 
   .renting-steps li p {
-    @apply text-[0.8rem] font-normal font-montserrat text-gray-500;
+    @apply text-[0.86rem] font-normal text-gray-500 leading-5 mt-0;
   }
 
   .customer-assurance .side {

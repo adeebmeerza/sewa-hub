@@ -23,8 +23,14 @@ const loginSchema = z.object({
 
 type LoginFormValues = z.infer<typeof loginSchema>;
 
+interface UserData {
+  id: string;
+  name: string;
+  email: string;
+}
+
 interface LoginFormProps {
-  onSuccess: (userData: any) => void;
+  onSuccess: (userData: UserData) => void;
   onForgotPassword: () => void;
 }
 
@@ -61,6 +67,7 @@ const LoginForm = ({ onSuccess, onForgotPassword }: LoginFormProps) => {
       onSuccess(userData);
     } catch (err) {
       setError("Invalid email or password. Please try again.");
+      console.log(err);
     } finally {
       setIsLoading(false);
     }

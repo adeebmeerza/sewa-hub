@@ -34,7 +34,7 @@ const BrowseByCategory = () => {
   const categories = RENTAL_CATEGORIES;
 
   return (
-    <section id="browse-by-categories">
+    <section id="browse-by-categories" className="wrapper">
       <div>
         <h2>Browse by category</h2>
       </div>

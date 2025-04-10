@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const HowItWorks = () => {
   return (
-    <section>
+    <section className="wrapper">
       <h2>Simple & Secure Rentals</h2>
       <div>
         <ol className="renting-steps my-4">
