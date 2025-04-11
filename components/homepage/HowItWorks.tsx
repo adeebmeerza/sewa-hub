@@ -1,65 +1,98 @@
+"use client";
+
 import Image from "next/image";
+import CustomCarousel from "../ui/reusable/custom-carousel";
+import { Card, CardContent } from "../ui/card";
+import Autoplay from "embla-carousel-autoplay";
+
+const items = [
+  {
+    image: {
+      url: "/search.svg",
+      alt: "Search",
+    },
+    title: "1. Browse Items",
+    description: "Search for what you need",
+  },
+  {
+    image: {
+      url: "/booking.svg",
+      alt: "Booking item",
+    },
+    title: "2. Book & Pay",
+    description: "Secure checkout",
+  },
+  {
+    image: {
+      url: "/deliveries.svg",
+      alt: "Pickup item",
+    },
+    title: "3. Pickup or Delivery",
+    description: "Choose your option",
+  },
+  {
+    image: {
+      url: "/high-five.svg",
+      alt: "Return item",
+    },
+    title: "4. Return It",
+    description: "Easy returns, no hassle",
+  },
+];
+
+type StepProp = {
+  image: {
+    url: string;
+    alt: string;
+  };
+  title: string;
+  description: string;
+};
+
+const StepCard = ({ image, title, description }: StepProp) => {
+  return (
+    <div className="h-full">
+      <Card className="h-full flex flex-col py-4 sm:border-none sm:shadow-none">
+        <CardContent className="flex flex-col items-center flex-grow px-1 md:px-6">
+          <div className="h-[100px] w-[100px] sm:h-[110px] sm:w-[110px] lg:w-[120px] lg:h-[120px] relative">
+            <Image
+              src={image.url}
+              alt={image.alt}
+              fill
+              className="object-contain"
+            />
+          </div>
+          <div className="text-center mt-6 flex-grow flex flex-col">
+            <h3 className="text-base">{title}</h3>
+            <p className="mt-0 text-sm text-gray-600">{description}</p>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
 
 const HowItWorks = () => {
   return (
     <section className="wrapper">
-      <h2>Simple & Secure Rentals</h2>
-      <div>
-        <ol className="renting-steps my-4">
-          <li>
-            <Image
-              src={"/search.svg"}
-              alt={"Search"}
-              width={80}
-              height={120}
-              className="object-contain"
-            />
-            <div>
-              <h3>1. Browse Items</h3>
-              <p>Search for what you need</p>
-            </div>
-          </li>
-          <li>
-            <Image
-              src={"/booking.svg"}
-              alt={"Booking item"}
-              width={100}
-              height={50}
-              className="object-contain"
-            />
-            <div>
-              <h3>2. Book & Pay</h3>
-              <p>Secure checkout</p>
-            </div>
-          </li>
-          <li>
-            <Image
-              src={"/deliveries.svg"}
-              alt={"Pickup item"}
-              width={100}
-              height={50}
-              className="object-contain"
-            />
-            <div>
-              <h3>3. Pickup or Delivery</h3>
-              <p>Choose your option</p>
-            </div>
-          </li>
-          <li>
-            <Image
-              src={"/high-five.svg"}
-              alt={"Return item"}
-              width={100}
-              height={50}
-              className="object-contain"
-            />
-            <div>
-              <h3>4. Return It</h3>
-              <p>Easy returns, no hassle</p>
-            </div>
-          </li>
-        </ol>
-      </div>
+      <h2>Start Renting Easily</h2>
+
+      <CustomCarousel
+        items={items}
+        renderItem={(item) => <StepCard {...item} />}
+        carouselOpts={{
+          align: "start",
+          slidesToScroll: 1,
+        }}
+        itemClassName="basis-full sm:basis-1/3 lg:basis-1/4"
+        carouselPlugins={[
+          Autoplay({
+            delay: 3000,
+            stopOnMouseEnter: true,
+          }),
+        ]}
+        showControl={false}
+      />
     </section>
   );
 };

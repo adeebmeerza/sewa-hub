@@ -4,10 +4,10 @@ import { Button } from "../ui/button";
 const LenderCTA = () => {
   return (
     <section className="wrapper">
-      <div className="lenderCta bg-primary text-white rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center">
-        <div className="sm:pr-4 md:pr-18">
+      <div className="lenderCta bg-primary text-white rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-center md:gap-0 lg:gap-16">
+        <div className="sm:pr-4 md:pr-12">
           <h2>
-            Earn Money from <span className="sm:block">Your Unused Items</span>
+            Earn Money from <span className="block">Your Unused Items</span>
           </h2>
           <div className="my-2">
             <p className="mb-2">Turn your extra items into passive income.</p>
@@ -16,7 +16,7 @@ const LenderCTA = () => {
             </Button>
           </div>
         </div>
-        <div className="side w-[200px] sm:w-[230px] md:w-[250px] -my-10 mx-auto sm:mr-0" />
+        <div className="lender-cta-side w-[200px] sm:w-[230px] md:w-[300px] -my-10 sm:-my-0 mx-auto lg:mx-0" />
       </div>
     </section>
   );

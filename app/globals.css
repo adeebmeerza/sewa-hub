@@ -137,7 +137,7 @@
     @apply font-montserrat;
   }
   h1 {
-    @apply scroll-m-20 text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight;
+    @apply scroll-m-20 text-4xl md:text-4xl lg:text-5xl font-extrabold tracking-tight;
   }
   h2 {
     @apply scroll-m-20 text-xl lg:text-3xl font-semibold tracking-tight first:mt-0;
@@ -152,7 +152,7 @@
     @apply text-[14px] sm:text-base leading-5 sm:leading-7 [&:not(:first-child)]:mt-1 sm:[&:not(:first-child)]:mt-2;
   }
   section {
-    @apply my-8 md:my-12 lg:my-18;
+    @apply my-8 md:my-12 lg:mb-20;
   }
   ul {
     @apply my-6 ml-6 list-disc [&>li]:mt-2;
@@ -182,7 +182,7 @@
 
 @layer components {
   .wrapper {
-    @apply container mx-auto px-4 md:px-16 lg:px-40 xl:px-52;
+    @apply container mx-auto px-4 md:px-6 lg:px-12;
   }
 
   .form-item {
@@ -230,7 +230,7 @@
     aspect-ratio: 1/1;
   }
 
-  .lenderCta .side {
+  .lender-cta-side {
     background-image: url("/think-to-rent.svg");
     background-repeat: no-repeat;
     background-position: center;

@@ -1,6 +1,7 @@
 const RENTAL_CATEGORIES = [
   {
     name: "Event & Party Supplies",
+    shortName: "Event & Party",
     slug: "event-party",
     icon: "🎉",
     type: "category",
@@ -80,6 +81,7 @@ const RENTAL_CATEGORIES = [
   },
   {
     name: "Photography & Video Equipment",
+    shortName: "Cameras",
     slug: "photography-video",
     icon: "📷",
     type: "category",
@@ -145,6 +147,7 @@ const RENTAL_CATEGORIES = [
   },
   {
     name: "Outdoor & Adventure Gear",
+    shortName: "Recretional Gear",
     slug: "outdoor-adventure",
     icon: "⛺",
     type: "category",
@@ -224,6 +227,7 @@ const RENTAL_CATEGORIES = [
   },
   {
     name: "Tools & Home Improvement",
+    shortName: "Home Tools",
     slug: "tools-home",
     icon: "🔨",
     type: "category",
@@ -289,6 +293,7 @@ const RENTAL_CATEGORIES = [
   },
   {
     name: "Luxury & Specialty Items",
+    shortName: "Luxuries",
     slug: "luxury-specialty",
     icon: "💎",
     type: "category",
@@ -333,6 +338,7 @@ const RENTAL_CATEGORIES = [
   },
   {
     name: "Electronics & Tech Gadgets",
+    shortName: "Electronics & Console",
     slug: "electronics-tech",
     icon: "💻",
     type: "category",
@@ -384,6 +390,7 @@ const RENTAL_CATEGORIES = [
   },
   {
     name: "Wedding & Formal Wear",
+    shortName: "Wedding Formal",
     slug: "wedding-formal",
     icon: "👗",
     type: "category",
@@ -421,6 +428,7 @@ const RENTAL_CATEGORIES = [
   },
   {
     name: "Sports & Fitness Equipment",
+    shortName: "Sports Equipment",
     slug: "sports-fitness",
     icon: "🏋️‍♂️",
     type: "category",
@@ -472,6 +480,7 @@ const RENTAL_CATEGORIES = [
   },
   {
     name: "Medical & Healthcare Equipment",
+    shortName: "Healthcare Equipment",
     slug: "medical-healthcare",
     icon: "🏥",
     type: "category",
@@ -523,6 +532,7 @@ const RENTAL_CATEGORIES = [
   },
   {
     name: "Office & Work Equipment",
+    shortName: "Office Equipment",
     slug: "office-work",
     icon: "🏢",
     type: "category",
@@ -567,6 +577,7 @@ const RENTAL_CATEGORIES = [
   },
   {
     name: "Gaming & Entertainment",
+    shortName: "Games, Hobbies",
     slug: "gaming-entertainment",
     icon: "🎮",
     type: "category",
@@ -611,6 +622,7 @@ const RENTAL_CATEGORIES = [
   },
   {
     name: "Costumes & Cosplay",
+    shortName: "Costumes",
     slug: "costumes-cosplay",
     icon: "🎭",
     type: "category",
@@ -648,6 +660,7 @@ const RENTAL_CATEGORIES = [
   },
   {
     name: "Pet Accessories",
+    shortName: "Pet Accessories",
     slug: "pet-accessories",
     icon: "🐶",
     type: "category",
@@ -678,6 +691,7 @@ const RENTAL_CATEGORIES = [
   },
   {
     name: "Vehicles & Transportation",
+    shortName: "Car, Motor",
     slug: "vehicles-transportation",
     icon: "🚗",
     type: "category",

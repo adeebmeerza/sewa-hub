@@ -1,8 +1,8 @@
 "use client";
 
 import ItemCard from "../ItemCard";
-import { Button } from "../ui/button";
 import CustomCarousel from "../ui/reusable/custom-carousel";
+import CustomButton from "../CustomButton";
 
 const items = [
   {
@@ -124,17 +124,20 @@ const items = [
 const ItemsShowcase = () => {
   return (
     <section id="items-showcase" className="wrapper relative">
-      <div className="flex justify-between">
-        <h2>Rent anytime, anywhere</h2>
-        <Button variant="outline" className="hidden sm:inline-flex">
-          View all
-        </Button>
+      <div className="flex justify-between items-end">
+        <h2>
+          <span className="sm:hidden">Discover Nearby</span>
+          <span className="hidden sm:inline">Discover Nearby Item</span>
+        </h2>
+        <CustomButton variant="link" className="py-0 h-auto leading-[28px]">
+          View all &gt;
+        </CustomButton>
       </div>
 
       <CustomCarousel
         items={items}
         renderItem={(item) => <ItemCard {...item} />}
-        itemClassName="basis-1/1 sm:basis-1/3 lg:basis-1/4"
+        itemClassName="basis-1/1 sm:basis-1/3 lg:basis-1/4 grow-1"
       />
     </section>
   );

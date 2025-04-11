@@ -33,7 +33,7 @@ const ItemCard = ({
 }: Props) => {
   return (
     <Link href={""}>
-      <Card className="rounded-xl transition-all duration-300 hover:shadow-md gap-0 py-0 overflow-hidden text-gray-500">
+      <Card className="rounded-xl transition-all duration-300 hover:shadow-md gap-0 py-0 overflow-hidden text-gray-500 h-full flex-grow justify-between">
         <div className="relative aspect-square overflow-hidden h-[150px] px-0">
           <Image
             src={thumbnail || "/product-placeholder.png"}
@@ -43,8 +43,8 @@ const ItemCard = ({
           />
         </div>
 
-        <CardContent className="px-4 my-4">
-          <CardTitle className="font-medium leading-5 line-clamp-2 text-gray-800 mb-1 sm:mb-2 text-sm">
+        <CardContent className="px-4 my-4 flex flex-col grow">
+          <CardTitle className="font-medium leading-5 line-clamp-2 text-gray-800 mb-1 sm:mb-2 text-sm grow">
             {name}
           </CardTitle>
 

@@ -8,16 +8,18 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../carousel";
-import { Button } from "../button";
 import CustomButton from "../../CustomButton";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { ReactNode, useCallback, useEffect, useState } from "react";
+import { EmblaOptionsType, EmblaPluginType } from "embla-carousel";
 
 type CustomCarouselProps<T> = {
   items: T[];
   renderItem: (item: T, index: number) => ReactNode;
   itemClassName?: string;
-  carouselOpts?: { slidesToScroll?: number };
+  carouselOpts?: EmblaOptionsType;
+  carouselPlugins?: EmblaPluginType[];
+  showControl?: boolean;
 };
 
 function CustomCarousel<T>({
@@ -25,6 +27,8 @@ function CustomCarousel<T>({
   itemClassName,
   renderItem,
   carouselOpts,
+  carouselPlugins,
+  showControl = true,
 }: CustomCarouselProps<T>) {
   const [api, setApi] = useState<CarouselApi>();
   const [canScrollPrev, setCanScrollPrev] = useState(false);
@@ -55,7 +59,11 @@ function CustomCarousel<T>({
   }, [api]);
 
   return (
-    <Carousel opts={{ align: "start", ...carouselOpts }} setApi={setApi}>
+    <Carousel
+      opts={{ align: "start", ...carouselOpts }}
+      plugins={carouselPlugins}
+      setApi={setApi}
+    >
       <CarouselContent className="my-4">
         {items.map((item, index) => (
           <CarouselItem key={index} className={itemClassName}>
@@ -63,34 +71,37 @@ function CustomCarousel<T>({
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="-left-4 z-2 hover:scale-150 shadow-md size-11 sm:size-8" />
-      <CarouselNext className="-right-4 z-2 hover:scale-150 shadow-md size-11 sm:size-8" />
+      {showControl && (
+        <>
+          <CarouselPrevious className="-left-4 z-2 hover:scale-150 shadow-md size-11 sm:size-8" />
+          <CarouselNext className="-right-4 z-2 hover:scale-150 shadow-md size-11 sm:size-8" />
+        </>
+      )}
 
-      <div className="flex sm:hidden flex-row items-center gap-6 justify-end flex-wrap w-full">
-        <CustomButton variant="outline" size="xl" className="flex-grow">
-          View all
-        </CustomButton>
-        <div className="space-x-2 shrink-0">
-          <Button
-            size="icon"
-            variant="outline"
-            onClick={scrollPrev}
-            className="-left-2 sm:-left-4 z-2 hover:scale-150 shadow-md size-11 sm:size-8"
-            disabled={!canScrollPrev}
-          >
-            <ArrowLeft />
-          </Button>
-          <Button
-            size="icon"
-            variant="outline"
-            onClick={scrollNext}
-            className="-left-2 sm:-left-4 z-2 hover:scale-150 shadow-md size-11 sm:size-8"
-            disabled={!canScrollNext}
-          >
-            <ArrowRight />
-          </Button>
+      {showControl && (
+        <div className="flex sm:hidden flex-row items-center gap-6 justify-end flex-wrap w-full">
+          <div className="space-x-2 shrink-0">
+            <CustomButton
+              size="icon"
+              variant="outline"
+              onClick={scrollPrev}
+              className="-left-2 sm:-left-4 z-2 hover:scale-150 shadow-md size-11 sm:size-8 rounded-full"
+              disabled={!canScrollPrev}
+            >
+              <ArrowLeft />
+            </CustomButton>
+            <CustomButton
+              size="icon"
+              variant="outline"
+              onClick={scrollNext}
+              className="-left-2 sm:-left-4 z-2 hover:scale-150 shadow-md size-11 sm:size-8 rounded-full"
+              disabled={!canScrollNext}
+            >
+              <ArrowRight />
+            </CustomButton>
+          </div>
         </div>
-      </div>
+      )}
     </Carousel>
   );
 }

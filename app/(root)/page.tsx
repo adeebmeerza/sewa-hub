@@ -1,10 +1,10 @@
 import Header from "@/components/Header";
 import Hero from "@/components/homepage/Hero";
 import BrowseByCategory from "@/components/homepage/BrowseByCategory";
-import CustomerAssurance from "@/components/homepage/CustomerAssurance";
 import HowItWorks from "@/components/homepage/HowItWorks";
 import ItemsShowcase from "@/components/homepage/ItemsShowcase";
 import LenderCTA from "@/components/homepage/LenderCTA";
+// import CustomerAssurance from "@/components/homepage/CustomerAssurance";
 
 export default function Home() {
   return (
@@ -25,15 +25,15 @@ export default function Home() {
           <Hero />
         </div>
 
-        <ItemsShowcase />
-
         <HowItWorks />
 
         <BrowseByCategory />
 
+        <ItemsShowcase />
+
         {/* <div>Popular Rentals</div> */}
 
-        <CustomerAssurance />
+        {/* <CustomerAssurance /> */}
 
         <LenderCTA />
       </main>
