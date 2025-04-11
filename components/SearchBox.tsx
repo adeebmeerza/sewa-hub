@@ -51,7 +51,7 @@ const SearchBox = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="search-box space-y-3 w-3/5 mx-auto flex flex-col bg-gray-50 p-2 rounded-lg items-center"
+        className="search-box space-y-3 w-full mx-auto flex flex-col bg-gray-50 p-2 rounded-lg items-center"
       >
         {/* Search Input + Button */}
         <div className="relative w-full">
