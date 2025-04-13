@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import Hero from "@/components/homepage/Hero";
 import BrowseByCategory from "@/components/homepage/BrowseByCategory";
 import HowItWorks from "@/components/homepage/HowItWorks";
@@ -18,10 +17,8 @@ export default function Home() {
         }}
       /> */}
 
-      <main id="container">
-        <div className="bg-primary w-full">
-          <Header />
-
+      <main className="outline-0">
+        <div className="bg-primary">
           <Hero />
         </div>
 

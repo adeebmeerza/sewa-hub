@@ -3,10 +3,10 @@ import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 
-import { Toaster } from "@/components/ui/sonner";
 import Footer from "@/components/Footer";
 import { UIProvider } from "./contexts/ui-context";
 import GlobalDialog from "@/components/ui/global-dialog";
+import Layout from "@/components/layout";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -32,11 +32,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} ${montserrat.variable} antialiased`}>
         <UIProvider>
-          {children}
+          <Layout>{children}</Layout>
           <GlobalDialog />
         </UIProvider>
-
-        <Toaster />
 
         <Footer />
         <Analytics />

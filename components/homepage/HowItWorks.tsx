@@ -52,9 +52,9 @@ type StepProp = {
 const StepCard = ({ image, title, description }: StepProp) => {
   return (
     <div className="h-full">
-      <Card className="h-full flex flex-col py-4 sm:border-none sm:shadow-none">
+      <Card className="h-full flex flex-col pt-1 pb-3 sm:py-4 sm:border-none sm:shadow-none">
         <CardContent className="flex flex-col items-center flex-grow px-1 md:px-6">
-          <div className="h-[100px] w-[100px] sm:h-[110px] sm:w-[110px] lg:w-[120px] lg:h-[120px] relative">
+          <div className="h-[90px] w-[90px] sm:h-[110px] sm:w-[110px] lg:w-[120px] lg:h-[120px] relative">
             <Image
               src={image.url}
               alt={image.alt}
@@ -62,8 +62,8 @@ const StepCard = ({ image, title, description }: StepProp) => {
               className="object-contain"
             />
           </div>
-          <div className="text-center mt-6 flex-grow flex flex-col">
-            <h3 className="text-base">{title}</h3>
+          <div className="text-center mt-0 sm:mt-6 flex-grow flex flex-col">
+            <h3 className="text-base font-medium font-inter">{title}</h3>
             <p className="mt-0 text-sm text-gray-600">{description}</p>
           </div>
         </CardContent>

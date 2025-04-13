@@ -42,7 +42,7 @@ const LocationPicker = () => {
         </APIProvider>
 
         <div className="rounded text-center p-2 w-full">
-          <p className=" flex items-center align-baseline">
+          <p className="flex items-center align-baseline">
             <MapPin className="text-blue-400 shrink-0 mr-2" size="16" />
             <span className="text-sm text-left line-clamp-1 text-gray-700">
               {pin.address}

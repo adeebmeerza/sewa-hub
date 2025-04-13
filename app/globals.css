@@ -152,7 +152,7 @@
     @apply text-[14px] sm:text-base leading-5 sm:leading-7 [&:not(:first-child)]:mt-1 sm:[&:not(:first-child)]:mt-2;
   }
   section {
-    @apply my-8 md:my-12 lg:mb-20;
+    @apply pt-8 pb-2 md:py-12 lg:py-10 xl:py-12;
   }
   ul {
     @apply my-6 ml-6 list-disc [&>li]:mt-2;
@@ -190,15 +190,11 @@
   }
 
   .search-input-wrapper {
-    @apply h-14 flex items-center px-4 rounded-md bg-blue-50 border border-blue-200 shadow-md text-base! text-primary focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive;
+    @apply flex items-center px-4 rounded-xl bg-blue-50 border border-blue-200 shadow-md text-base! text-primary focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive;
   }
 
   .search-input-button {
     @apply w-full text-secondary text-sm sm:text-base font-medium gap-1 justify-start;
-  }
-
-  .search-input {
-    @apply text-blue-700/90;
   }
 
   .renting-steps {
