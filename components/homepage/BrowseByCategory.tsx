@@ -20,7 +20,7 @@ const CategoryCard = ({
   return (
     <Link href={`/products/${slug}`}>
       <Card
-        className="flex flex-col items-center justify-center h-32 my-2 sm:my-4 rounded-none py-2
+        className="flex flex-col items-center justify-center h-32 my-2 sm:my-4 rounded-none
        gap-0"
       >
         <div className="text-center text-4xl sm:text-3xl mb-2">{icon}</div>
@@ -40,7 +40,10 @@ const BrowseByCategory = () => {
     <section id="browse-by-categories" className="wrapper">
       <div className="flex justify-between items-end">
         <h2>Browse by category</h2>
-        <CustomButton variant="link" className="py-0 h-auto leading-[28px]">
+        <CustomButton
+          variant="link"
+          className="py-0 px-2 h-auto leading-[28px]"
+        >
           View all &gt;
         </CustomButton>
       </div>

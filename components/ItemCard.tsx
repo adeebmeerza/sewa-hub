@@ -33,7 +33,7 @@ const ItemCard = ({
 }: Props) => {
   return (
     <Link href={""}>
-      <Card className="rounded-xl transition-all duration-300 hover:shadow-md gap-0 py-0 overflow-hidden text-gray-500 h-full flex-grow justify-between">
+      <Card className="rounded-xl transition-all duration-300 hover:shadow-md gap-0 overflow-hidden text-gray-500 h-full flex-grow justify-between">
         <div className="relative aspect-square overflow-hidden h-[150px] px-0">
           <Image
             src={thumbnail || "/product-placeholder.png"}
@@ -43,8 +43,8 @@ const ItemCard = ({
           />
         </div>
 
-        <CardContent className="px-4 my-4 flex flex-col grow">
-          <CardTitle className="font-medium leading-5 line-clamp-2 text-gray-800 mb-1 sm:mb-2 text-sm grow">
+        <CardContent className="px-4 my-2 flex flex-col grow">
+          <CardTitle className="font-medium leading-5 line-clamp-2 text-gray-800 mb-1 sm:mb-2 text-sm">
             {name}
           </CardTitle>
 
@@ -75,16 +75,20 @@ const ItemCard = ({
               <span className="text-sm">({reviews.count})</span>
             </div>
 
-            <div className="flex flex-row sm:flex-col gap-2 sm:gap-1">
-              <div className="flex items-center">
-                <MapPin size={12} className=" mr-1 h-4 w-4" />
-                <span>{location}</span>
+            <div className="flex flex-col gap-2 sm:gap-1">
+              <div className="flex-row flex gap-2 items-center">
+                <div>Like New</div>
+
+                <div className="text-xs">•</div>
+
+                <div className="flex items-center">
+                  <MapPin size={12} className="mr-0.5 h-4 w-4" />
+                  <span>{location}</span>
+                </div>
               </div>
 
-              <span className="inline sm:hidden text-xs text-gray-300">•</span>
-
-              <div className="owner-info flex flex-row items-center gap-1">
-                <Avatar className="h-4 w-4">
+              <div className="flex flex-row items-center gap-2">
+                <Avatar className="h-8 w-8">
                   <AvatarImage
                     src={owner.avatarImg}
                     alt={"Avatar"}
@@ -92,11 +96,13 @@ const ItemCard = ({
                   />
                   <AvatarFallback>{owner.name.charAt(0)}</AvatarFallback>
                 </Avatar>
-                <span className="truncate text-ellipsis">{owner.name}</span>
-                <span>
-                  {owner.verified && (
-                    <BadgeCheck size={14} className="inline-block" />
-                  )}
+                <span className="truncate text-ellipsis">
+                  {owner.name}
+                  <span className="ml-1">
+                    {owner.verified && (
+                      <BadgeCheck size={14} className="inline-block" />
+                    )}
+                  </span>
                 </span>
               </div>
             </div>

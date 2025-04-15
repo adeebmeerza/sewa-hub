@@ -3,6 +3,7 @@
 import ItemCard from "../ItemCard";
 import CustomCarousel from "../ui/reusable/custom-carousel";
 import CustomButton from "../ui/reusable/custom-button";
+import useMediaQuery from "@/app/hooks/use-media-query";
 
 const items = [
   {
@@ -15,7 +16,7 @@ const items = [
     },
     owner: {
       avatarImg: "/avatar.jpg",
-      name: "Syafiq Syahmi",
+      name: "Arif",
       verified: true,
     },
     location: "Cyberjaya",
@@ -34,7 +35,7 @@ const items = [
     },
     owner: {
       avatarImg: "/avatar.jpg",
-      name: "Amirul",
+      name: "Burhanuddin",
       verified: true,
     },
     location: "Cyberjaya",
@@ -53,7 +54,7 @@ const items = [
     },
     owner: {
       avatarImg: "/avatar.jpg",
-      name: "Irfan",
+      name: "Muthu",
       verified: true,
     },
     location: "Cyberjaya",
@@ -72,7 +73,7 @@ const items = [
     },
     owner: {
       avatarImg: "/avatar.jpg",
-      name: "Syafiq Syahmi",
+      name: "Saiful Bahri",
       verified: true,
     },
     location: "Cyberjaya",
@@ -91,7 +92,7 @@ const items = [
     },
     owner: {
       avatarImg: "/avatar.jpg",
-      name: "Syafiq Syahmi",
+      name: "Cheng",
       verified: true,
     },
     location: "Cyberjaya",
@@ -110,7 +111,7 @@ const items = [
     },
     owner: {
       avatarImg: "/avatar.jpg",
-      name: "Syafiq Syahmi",
+      name: "Jamal",
       verified: true,
     },
     location: "Cyberjaya",
@@ -122,6 +123,9 @@ const items = [
 ];
 
 const ItemsShowcase = () => {
+  const isMd = useMediaQuery("(min-width: 768px)");
+  const isLg = useMediaQuery("(min-width: 1024px)");
+
   return (
     <section id="items-showcase" className="wrapper relative">
       <div className="flex justify-between items-end">
@@ -137,7 +141,9 @@ const ItemsShowcase = () => {
       <CustomCarousel
         items={items}
         renderItem={(item) => <ItemCard {...item} />}
-        itemClassName="basis-1/1 sm:basis-1/3 lg:basis-1/4 grow-1"
+        itemClassName="basis-1/1 sm:basis-1/2 md:basis-1/3 lg:basis-1/4 grow-1"
+        carouselClassName="my-2"
+        carouselOpts={{ slidesToScroll: isLg ? 3 : isMd ? 2 : 1 }}
       />
     </section>
   );

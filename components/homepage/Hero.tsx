@@ -15,7 +15,7 @@ const Hero = () => {
         </div>
 
         <SearchProvider>
-          <SearchBox isStackedLayout={true} />
+          <SearchBox isStackedLayout={true} className="lg:w-6/10" />
         </SearchProvider>
       </div>
     </section>

@@ -3,10 +3,6 @@
 import DynamicFilters, {
   SearchFiltersType,
 } from "@/components/dynamic-filters";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
-import { useRouter, useSearchParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
 
 // Example with multiple filter types
 const searchFilters: SearchFiltersType = {
@@ -80,24 +76,24 @@ const searchFilters: SearchFiltersType = {
 //   sortBy: ["Relevance", "Price: Low to High", "Price: High to Low"],
 // };
 
-const simpleSearchFilters: SearchFiltersType = {
-  filters: {
-    categories: {
-      type: "multiSelect",
-      options: ["Category 1", "Category 2", "Category 3"],
-    },
-    brands: {
-      type: "singleSelect",
-      options: ["DJI", "Parrot", "Skydio", "XAG"],
-    },
-  },
-  sortBy: ["Relevance", "Price: Low to High", "Price: High to Low"],
-};
+// const simpleSearchFilters: SearchFiltersType = {
+//   filters: {
+//     categories: {
+//       type: "multiSelect",
+//       options: ["Category 1", "Category 2", "Category 3"],
+//     },
+//     brands: {
+//       type: "singleSelect",
+//       options: ["DJI", "Parrot", "Skydio", "XAG"],
+//     },
+//   },
+//   sortBy: ["Relevance", "Price: Low to High", "Price: High to Low"],
+// };
 
 const Page = () => {
   return (
-    <main className="wrapper flex flex-col md:flex-row gap-4">
-      <div className="grid md:grid-cols-[200px_1fr] gap-8 w-full">
+    <main className="wrapper flex flex-col md:flex-row gap-4 py-4">
+      <div className="grid md:grid-cols-[250px_1fr] gap-8 w-full">
         <aside>
           <DynamicFilters
             searchFilters={searchFilters}
@@ -107,9 +103,9 @@ const Page = () => {
             }}
           />
         </aside>
-        <div className="p-6 bg-muted/20">
-          <h1 className="text-2xl font-bold mb-4">Result</h1>
-          <p className="text-muted-foreground">
+        <div className="bg-muted/20 w-full">
+          <h1 className="text-2xl font-bold mb-0">Result</h1>
+          <p className="text-muted-foreground mt-0">
             Try selecting some filters and applying them to see updated results
           </p>
         </div>

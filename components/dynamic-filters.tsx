@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, ChevronDown, Key, X } from "lucide-react";
+import { Check, ChevronDown } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Checkbox } from "./ui/checkbox";
@@ -15,7 +15,6 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
-import { Separator } from "./ui/separator";
 import { Slider } from "./ui/slider";
 import {
   Accordion,
@@ -84,6 +83,7 @@ interface DynamicFiltersProps {
 }
 
 // Debounce utility function
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function debounce<T extends (...args: any[]) => any>(
   func: T,
   wait: number
@@ -145,47 +145,48 @@ const DynamicFilters = ({
   );
 
   // Calculate active filters count
-  const calculateActiveFiltersCount = (
-    filters: Record<string, FilterValue[]>
-  ) => {
-    return Object.entries(filters).reduce((count, [key, values]) => {
-      // Skip range slider min/max entries in the count
-      if (key.endsWith("Min") || key.endsWith("Max")) {
-        const baseKey = key.replace(/Min$|Max$/, "");
+  const calculateActiveFiltersCount = useCallback(
+    (filters: Record<string, FilterValue[]>) => {
+      return Object.entries(filters).reduce((count, [key, values]) => {
+        // Skip range slider min/max entries in the count
+        if (key.endsWith("Min") || key.endsWith("Max")) {
+          const baseKey = key.replace(/Min$|Max$/, "");
 
-        // Check if this baseKey exists in our filters
-        if (
-          searchFilters.filters[baseKey] &&
-          searchFilters.filters[baseKey].type === "rangeSlider"
-        ) {
-          const rangeFilter = searchFilters.filters[
-            baseKey
-          ] as RangeSliderFilter;
+          // Check if this baseKey exists in our filters
+          if (
+            searchFilters.filters[baseKey] &&
+            searchFilters.filters[baseKey].type === "rangeSlider"
+          ) {
+            const rangeFilter = searchFilters.filters[
+              baseKey
+            ] as RangeSliderFilter;
 
-          // Only count if this is the Max entry to avoid counting twice
-          if (key.endsWith("Max")) {
-            const minValue = Number(
-              filters[`${baseKey}Min`]?.[0] || rangeFilter.min
-            );
-            const maxValue = Number(
-              filters[`${baseKey}Max`]?.[0] || rangeFilter.max
-            );
+            // Only count if this is the Max entry to avoid counting twice
+            if (key.endsWith("Max")) {
+              const minValue = Number(
+                filters[`${baseKey}Min`]?.[0] || rangeFilter.min
+              );
+              const maxValue = Number(
+                filters[`${baseKey}Max`]?.[0] || rangeFilter.max
+              );
 
-            // If min is not at min bound or max is not at max bound, count as 1 active filter
-            if (minValue > rangeFilter.min || maxValue < rangeFilter.max) {
-              return count + 1;
+              // If min is not at min bound or max is not at max bound, count as 1 active filter
+              if (minValue > rangeFilter.min || maxValue < rangeFilter.max) {
+                return count + 1;
+              }
             }
+
+            // Skip counting this entry
+            return count;
           }
-
-          // Skip counting this entry
-          return count;
         }
-      }
 
-      // For regular filters, count the number of selected values
-      return count + values.length;
-    }, 0);
-  };
+        // For regular filters, count the number of selected values
+        return count + values.length;
+      }, 0);
+    },
+    [searchFilters.filters]
+  );
 
   const [activeFiltersCount, setActiveFiltersCount] = useState<number>(
     calculateActiveFiltersCount(initializeFilters())
@@ -205,6 +206,7 @@ const DynamicFilters = ({
       if (sort) {
         params.set("sort", sort);
       }
+      return params.toString();
     },
     []
   );
@@ -318,27 +320,27 @@ const DynamicFilters = ({
   };
 
   // Clear all filters
-  const clearAllFilters = () => {
-    const emptyFilters: Record<string, FilterValue[]> = {};
+  // const clearAllFilters = () => {
+  //   const emptyFilters: Record<string, FilterValue[]> = {};
 
-    // Initialize each filter category with empty array or default values for range sliders
-    Object.entries(searchFilters.filters).forEach(([filterKey, filter]) => {
-      if (filter.type === "rangeSlider") {
-        const rangeFilter = filter as RangeSliderFilter;
-        emptyFilters[`${filterKey}Min`] = [rangeFilter.min.toString()];
-        emptyFilters[`${filterKey}Max`] = [rangeFilter.max.toString()];
-      } else {
-        emptyFilters[filterKey] = [];
-      }
-    });
+  //   // Initialize each filter category with empty array or default values for range sliders
+  //   Object.entries(searchFilters.filters).forEach(([filterKey, filter]) => {
+  //     if (filter.type === "rangeSlider") {
+  //       const rangeFilter = filter as RangeSliderFilter;
+  //       emptyFilters[`${filterKey}Min`] = [rangeFilter.min.toString()];
+  //       emptyFilters[`${filterKey}Max`] = [rangeFilter.max.toString()];
+  //     } else {
+  //       emptyFilters[filterKey] = [];
+  //     }
+  //   });
 
-    setSelectedFilters(emptyFilters);
+  //   setSelectedFilters(emptyFilters);
 
-    // Apply filters immediately after clearing
-    setTimeout(() => {
-      applyFiltersRef.current(emptyFilters, selectedSort);
-    }, 0);
-  };
+  //   // Apply filters immediately after clearing
+  //   setTimeout(() => {
+  //     applyFiltersRef.current(emptyFilters, selectedSort);
+  //   }, 0);
+  // };
 
   // Render filter options based on filter type
   const renderFilterOptions = (filterKey: string, filter: FilterType) => {
@@ -566,7 +568,7 @@ const DynamicFilters = ({
   };
 
   return (
-    <div className={"grid gap-4"}>
+    <div className={"grid gap-2"}>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <h3 className="font-medium">Filters</h3>
@@ -578,7 +580,7 @@ const DynamicFilters = ({
         </div>
 
         <div className="flex items-center gap-2">
-          {activeFiltersCount > 0 && (
+          {/* {activeFiltersCount > 0 && (
             <Button
               variant="ghost"
               size="sm"
@@ -588,7 +590,7 @@ const DynamicFilters = ({
               Clear all
               <X className="ml-1 h-4 w-4" />
             </Button>
-          )}
+          )} */}
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -615,8 +617,6 @@ const DynamicFilters = ({
           </DropdownMenu>
         </div>
       </div>
-
-      <Separator />
 
       <div className="grid gap-4">
         <Accordion

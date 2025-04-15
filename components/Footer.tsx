@@ -28,7 +28,7 @@ const footerLinks = {
 const Footer = () => {
   return (
     <footer className="bg-gray-200">
-      <div className="wrapper py-20 flex flex-col sm:flex-row justify-between gap-10">
+      <div className="wrapper py-8 md:py-12 lg:py-16 flex flex-col sm:flex-row justify-between gap-10">
         <div className="space-y-3">
           <div
             className={`font-raleway text-3xl text-nowrap font-extrabold text-primary`}

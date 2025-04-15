@@ -22,17 +22,19 @@ export default function Home() {
           <Hero />
         </div>
 
-        <HowItWorks />
+        <div className="">
+          <HowItWorks />
 
-        <BrowseByCategory />
+          <BrowseByCategory />
 
-        <ItemsShowcase />
+          <ItemsShowcase />
 
-        {/* <div>Popular Rentals</div> */}
+          {/* <div>Popular Rentals</div> */}
 
-        {/* <CustomerAssurance /> */}
+          {/* <CustomerAssurance /> */}
 
-        <LenderCTA />
+          <LenderCTA />
+        </div>
       </main>
     </div>
   );

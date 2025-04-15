@@ -30,8 +30,10 @@ type FormValues = z.infer<typeof FormSchema>;
 
 const SearchBox = ({
   isStackedLayout = false,
+  className,
 }: {
   isStackedLayout?: boolean;
+  className?: string;
 }) => {
   const { search } = useSearch();
 
@@ -58,7 +60,8 @@ const SearchBox = ({
         onSubmit={form.handleSubmit(onSubmit)}
         className={cn(
           "search-box space-y-3 lg:py-0 w-full sm:w-9/10 lg:w-full mx-auto flex flex-col rounded-lg items-center",
-          isStackedLayout && "bg-gray-50 p-2 sm:bg-transparent sm:p-0"
+          isStackedLayout && "bg-gray-50 p-2 sm:bg-transparent sm:p-0",
+          className
         )}
       >
         <div className="relative w-full mb-1">

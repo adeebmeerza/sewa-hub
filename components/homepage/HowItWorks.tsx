@@ -51,7 +51,7 @@ type StepProp = {
 
 const StepCard = ({ image, title, description }: StepProp) => {
   return (
-    <div className="h-full">
+    <div className="h-full pt-2">
       <Card className="h-full flex flex-col pt-1 pb-3 sm:py-4 sm:border-none sm:shadow-none">
         <CardContent className="flex flex-col items-center flex-grow px-1 md:px-6">
           <div className="h-[90px] w-[90px] sm:h-[110px] sm:w-[110px] lg:w-[120px] lg:h-[120px] relative">

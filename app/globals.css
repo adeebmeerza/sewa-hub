@@ -152,7 +152,7 @@
     @apply text-[14px] sm:text-base leading-5 sm:leading-7 [&:not(:first-child)]:mt-1 sm:[&:not(:first-child)]:mt-2;
   }
   section {
-    @apply pt-8 pb-2 md:py-12 lg:py-10 xl:py-12;
+    @apply my-7 md:my-8 xl:my-12;
   }
   ul {
     @apply my-6 ml-6 list-disc [&>li]:mt-2;

@@ -17,6 +17,7 @@ type CustomCarouselProps<T> = {
   items: T[];
   renderItem: (item: T, index: number) => ReactNode;
   itemClassName?: string;
+  carouselClassName?: string;
   carouselOpts?: EmblaOptionsType;
   carouselPlugins?: EmblaPluginType[];
   showControl?: boolean;
@@ -26,6 +27,7 @@ function CustomCarousel<T>({
   items,
   itemClassName,
   renderItem,
+  carouselClassName,
   carouselOpts,
   carouselPlugins,
   showControl = true,
@@ -64,7 +66,7 @@ function CustomCarousel<T>({
       plugins={carouselPlugins}
       setApi={setApi}
     >
-      <CarouselContent className="my-4">
+      <CarouselContent className={carouselClassName}>
         {items.map((item, index) => (
           <CarouselItem key={index} className={itemClassName}>
             {renderItem(item, index)}
