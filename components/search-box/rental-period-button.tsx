@@ -1,5 +1,5 @@
 import React from "react";
-import CustomButton from "../CustomButton";
+import CustomButton from "../ui/reusable/custom-button";
 import { useSearchController } from "./search-controller";
 import { Calendar } from "lucide-react";
 import { DateRange } from "react-day-picker";

@@ -2,7 +2,7 @@
 
 import ItemCard from "../ItemCard";
 import CustomCarousel from "../ui/reusable/custom-carousel";
-import CustomButton from "../CustomButton";
+import CustomButton from "../ui/reusable/custom-button";
 
 const items = [
   {

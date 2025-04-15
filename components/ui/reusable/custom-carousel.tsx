@@ -8,7 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../carousel";
-import CustomButton from "../../CustomButton";
+import CustomButton from "./custom-button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { ReactNode, useCallback, useEffect, useState } from "react";
 import { EmblaOptionsType, EmblaPluginType } from "embla-carousel";

@@ -1,6 +1,6 @@
 "use client";
 
-import CustomButton from "../CustomButton";
+import CustomButton from "../ui/reusable/custom-button";
 import { Button } from "../ui/button";
 
 interface AuthMenuProps {

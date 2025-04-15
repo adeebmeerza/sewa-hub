@@ -12,7 +12,7 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
-import CustomButton from "../CustomButton";
+import CustomButton from "../ui/reusable/custom-button";
 
 const verificationSchema = z.object({
   code: z.string().min(4, "Please enter the verification code"),

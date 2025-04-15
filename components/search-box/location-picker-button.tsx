@@ -1,5 +1,5 @@
 import React from "react";
-import CustomButton from "../CustomButton";
+import CustomButton from "../ui/reusable/custom-button";
 import { MapPin } from "lucide-react";
 import { useSearchController } from "./search-controller";
 import { cn } from "@/lib/utils";

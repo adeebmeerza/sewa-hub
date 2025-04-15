@@ -13,7 +13,7 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
-import CustomButton from "../CustomButton";
+import CustomButton from "../ui/reusable/custom-button";
 import { Loader2 } from "lucide-react";
 
 const loginSchema = z.object({

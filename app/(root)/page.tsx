@@ -7,7 +7,7 @@ import LenderCTA from "@/components/homepage/LenderCTA";
 
 export default function Home() {
   return (
-    <div id="homepage" className="relative">
+    <div className="relative">
       {/* Blue background div that extends to half of the search box */}
       {/* <div
         className="absolute top-0 left-0 w-full bg-primary"

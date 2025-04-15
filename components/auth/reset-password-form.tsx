@@ -13,7 +13,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import CustomButton from "../CustomButton";
+import CustomButton from "../ui/reusable/custom-button";
 
 const resetPasswordSchema = z
   .object({

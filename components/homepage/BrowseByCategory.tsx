@@ -4,7 +4,7 @@ import { Card, CardTitle } from "../ui/card";
 import Link from "next/link";
 import RENTAL_CATEGORIES from "@/constants/rentalCategories";
 import CustomCarousel from "../ui/reusable/custom-carousel";
-import CustomButton from "../CustomButton";
+import CustomButton from "../ui/reusable/custom-button";
 
 const CategoryCard = ({
   slug,

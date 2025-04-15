@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { buttonVariants } from "../ui/button";
 import { useSearch } from "@/app/contexts/search-context";
 import { Calendar } from "../ui/calendar";
-import CustomButton from "../CustomButton";
+import CustomButton from "../ui/reusable/custom-button";
 import { DateRange } from "react-day-picker";
 
 const DateRangePicker = () => {

@@ -1,7 +1,7 @@
 "use client";
 
 import { CheckCircle } from "lucide-react";
-import CustomButton from "../CustomButton";
+import CustomButton from "../ui/reusable/custom-button";
 
 interface SuccessScreenProps {
   message: string;

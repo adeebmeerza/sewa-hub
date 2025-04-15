@@ -3,7 +3,7 @@
 import { APIProvider } from "@vis.gl/react-google-maps";
 import MapContainer from "../google-maps/MapContainer";
 import { MapPin, Search } from "lucide-react";
-import CustomButton from "../CustomButton";
+import CustomButton from "../ui/reusable/custom-button";
 import { useSearch } from "@/app/contexts/search-context";
 import { useState } from "react";
 import { useUI } from "@/app/contexts/ui-context";

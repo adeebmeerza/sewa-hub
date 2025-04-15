@@ -1,6 +1,6 @@
 "use client";
 
-import CustomButton from "../CustomButton";
+import CustomButton from "../ui/reusable/custom-button";
 import { useAuthController } from "./auth-controller";
 
 interface AuthButtonProps

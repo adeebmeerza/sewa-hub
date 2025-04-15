@@ -12,7 +12,7 @@ import {
   FormItem,
   FormLabel,
 } from "@/components/ui/form";
-import CustomButton from "./CustomButton";
+import CustomButton from "./ui/reusable/custom-button";
 
 import { CalendarIcon, MapPin, Search } from "lucide-react";
 import React from "react";
