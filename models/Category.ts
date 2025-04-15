@@ -5,7 +5,7 @@ export interface ICategory extends mongoose.Document {
   name: string;
   slug: string;
   icon?: string;
-  type: PageType.Category;
+  type: PageType.CATEGORY;
   parentCategory?: mongoose.Types.ObjectId | null;
   createdAt: Date;
   updatedAt: Date;
@@ -28,8 +28,8 @@ const CategorySchema = new mongoose.Schema<ICategory>(
     type: {
       type: String,
       required: true,
-      enum: [PageType.Category],
-      default: PageType.Category,
+      enum: [PageType.CATEGORY],
+      default: PageType.CATEGORY,
     },
     icon: {
       type: String,

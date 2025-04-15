@@ -3,6 +3,7 @@
 import DynamicFilters, {
   SearchFiltersType,
 } from "@/components/dynamic-filters";
+import { Suspense } from "react";
 
 // Example with multiple filter types
 const searchFilters: SearchFiltersType = {
@@ -92,25 +93,28 @@ const searchFilters: SearchFiltersType = {
 
 const Page = () => {
   return (
-    <main className="wrapper flex flex-col md:flex-row gap-4 py-4">
-      <div className="grid md:grid-cols-[250px_1fr] gap-8 w-full">
-        <aside>
-          <DynamicFilters
-            searchFilters={searchFilters}
-            onFilterChange={(filters, sortBy) => {
-              console.log("Filters changed:", filters);
-              console.log("Sort by:", sortBy);
-            }}
-          />
-        </aside>
-        <div className="bg-muted/20 w-full">
-          <h1 className="text-2xl font-bold mb-0">Result</h1>
-          <p className="text-muted-foreground mt-0">
-            Try selecting some filters and applying them to see updated results
-          </p>
+    <Suspense>
+      <main className="wrapper flex flex-col md:flex-row gap-4 py-4">
+        <div className="grid md:grid-cols-[250px_1fr] gap-8 w-full">
+          <aside>
+            <DynamicFilters
+              searchFilters={searchFilters}
+              onFilterChange={(filters, sortBy) => {
+                console.log("Filters changed:", filters);
+                console.log("Sort by:", sortBy);
+              }}
+            />
+          </aside>
+          <div className="bg-muted/20 w-full">
+            <h1 className="text-2xl font-bold mb-0">Result</h1>
+            <p className="text-muted-foreground mt-0">
+              Try selecting some filters and applying them to see updated
+              results
+            </p>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </Suspense>
   );
 };
 

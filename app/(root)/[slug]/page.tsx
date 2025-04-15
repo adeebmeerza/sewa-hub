@@ -8,7 +8,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const data = await fetchPageData(slug);
 
   return (
-    <>{data.type === PageType.Product && <ProductDetails data={data} />}</>
+    <>{data.type === PageType.PRODUCT && <ProductDetails data={data} />}</>
   );
 };
 

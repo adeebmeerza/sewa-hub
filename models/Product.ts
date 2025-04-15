@@ -3,7 +3,7 @@ import { PageType } from "../enums";
 
 export interface IProduct extends mongoose.Document {
   slug: string;
-  type: PageType.Product;
+  type: PageType.PRODUCT;
   name: string;
   description: string;
   category: string;
@@ -41,8 +41,8 @@ const ProductSchema = new mongoose.Schema<IProduct>(
     type: {
       type: String,
       required: true,
-      enum: [PageType.Product],
-      default: PageType.Product,
+      enum: [PageType.PRODUCT],
+      default: PageType.PRODUCT,
     },
     name: {
       type: String,

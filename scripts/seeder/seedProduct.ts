@@ -21,7 +21,7 @@ const seedProducts = async () => {
   const products = [
     {
       slug: "dslr-camera-canon",
-      type: PageType.Product,
+      type: PageType.PRODUCT,
       name: "Canon EOS 90D DSLR Camera",
       description:
         "High-performance DSLR camera with 32.5 MP sensor, perfect for photography and video.",
@@ -50,7 +50,7 @@ const seedProducts = async () => {
     },
     {
       slug: "gaming-laptop-rog",
-      type: PageType.Product,
+      type: PageType.PRODUCT,
       name: "ASUS ROG Zephyrus G14 Gaming Laptop",
       description:
         "High-end gaming laptop with Ryzen 9 processor and RTX 4060 GPU.",
@@ -79,7 +79,7 @@ const seedProducts = async () => {
     {
       _id: new mongoose.Types.ObjectId(),
       slug: "tent-outdoor-camping",
-      type: PageType.Product,
+      type: PageType.PRODUCT,
       name: "Coleman Sundome Camping Tent",
       description:
         "Spacious and durable camping tent suitable for outdoor adventures.",
@@ -108,7 +108,7 @@ const seedProducts = async () => {
     {
       _id: new mongoose.Types.ObjectId(),
       slug: "electric-scooter-xiaomi",
-      type: PageType.Product,
+      type: PageType.PRODUCT,
       name: "Xiaomi Mi Electric Scooter Pro 2",
       description:
         "Portable and high-speed electric scooter with long battery life.",

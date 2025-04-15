@@ -38,7 +38,7 @@ const seedCategories = async () => {
       name: category.name,
       slug: category.slug,
       icon: category.icon,
-      type: PageType.Category,
+      type: PageType.CATEGORY,
       parentCategory: null,
     };
     categories.push(categoryItem);
@@ -48,7 +48,7 @@ const seedCategories = async () => {
         name: subcategory.name,
         slug: subcategory.slug,
         icon: subcategory.icon,
-        type: PageType.Category,
+        type: PageType.CATEGORY,
         parentCategory: categoryItem.slug,
       };
       subcategories.push(subcategoryItem);
