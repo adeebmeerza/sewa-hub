@@ -1,59 +1,43 @@
 "use client";
 
-import { addDays } from "date-fns";
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext } from "react";
 import { DateRange } from "react-day-picker";
+import { FilterType, FilterValue } from "../types/filters";
 
-type SearchState = {
-  location: {
-    address: string;
-    center: {
-      lat: number;
-      lng: number;
-    } | null;
+type LocationType = {
+  address: string;
+  center: {
+    lat: number;
+    lng: number;
   };
+};
+
+interface SearchContextValue {
+  query: string;
+  setQuery: (value: string) => void;
+  location: LocationType;
+  setLocation: (location: LocationType) => void;
   period: DateRange | null;
-};
-
-type SearchContextType = {
-  search: SearchState;
-  setSearch: (state: Partial<SearchState>) => void;
+  setPeriod: (period: DateRange | null) => void;
+  filters: Record<string, FilterValue[]>;
+  setFilter: (
+    key: string,
+    value: FilterValue,
+    filterType?: FilterType["type"]
+  ) => void;
+  removeFilter: (key: string, value: any) => void;
+  clearFilter: () => void;
+  sort: string;
+  setSort: (value: string) => void;
+  triggerSearch: () => void;
   reset: () => void;
-};
+}
 
-const defaultState: SearchState = {
-  location: {
-    address: "Kuala Lumpur",
-    center: {
-      lat: 3.152815,
-      lng: 101.703651,
-    },
-  },
-  period: {
-    from: new Date(),
-    to: addDays(new Date(), 2),
-  },
-};
+export const SearchContext = createContext<SearchContextValue | undefined>(
+  undefined
+);
 
-const SearchContext = createContext<SearchContextType | undefined>(undefined);
-
-export const SearchProvider = ({ children }: { children: ReactNode }) => {
-  const [search, setSearchState] = useState<SearchState>(defaultState);
-
-  const setSearch = (update: Partial<SearchState>) => {
-    setSearchState((prev) => ({ ...prev, ...update }));
-  };
-
-  const reset = () => setSearchState(defaultState);
-
-  return (
-    <SearchContext.Provider value={{ search, setSearch, reset }}>
-      {children}
-    </SearchContext.Provider>
-  );
-};
-
-export const useSearch = () => {
+export const useSearchContext = () => {
   const context = useContext(SearchContext);
   if (!context) throw new Error("useSearch must be used within SearchProvider");
   return context;

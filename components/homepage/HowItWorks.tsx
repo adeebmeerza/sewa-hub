@@ -83,6 +83,7 @@ const HowItWorks = () => {
         carouselOpts={{
           align: "start",
           slidesToScroll: 1,
+          loop: true,
         }}
         itemClassName="basis-full sm:basis-1/3 lg:basis-1/4"
         carouselPlugins={[

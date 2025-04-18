@@ -2,8 +2,8 @@
 
 import { useUI } from "@/app/contexts/ui-context";
 import LocationPicker from "./location-picker";
-import { SearchProvider } from "@/app/contexts/search-context";
 import DateRangePicker from "./DateRangePicker";
+import SearchProvider from "./search-provider";
 
 export function useSearchController() {
   const { openDialog } = useUI();

@@ -17,10 +17,10 @@ import CustomButton from "./ui/reusable/custom-button";
 import { CalendarIcon, MapPin, Search } from "lucide-react";
 import React from "react";
 import LocationPickerButton from "./search-box/location-picker-button";
-import { useSearch } from "@/app/contexts/search-context";
 import RentalPeriodButton from "./search-box/rental-period-button";
 import { Input } from "./ui/input";
 import { cn } from "@/lib/utils";
+import { useSearchContext } from "@/app/contexts/search-context";
 
 const FormSchema = z.object({
   query: z.string().trim().toLowerCase(),
@@ -35,7 +35,7 @@ const SearchBox = ({
   isStackedLayout?: boolean;
   className?: string;
 }) => {
-  const { search } = useSearch();
+  const { location, period } = useSearchContext();
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -129,7 +129,7 @@ const SearchBox = ({
               <span>Near</span>
             </FormLabel>
             <LocationPickerButton
-              address={search.location.address}
+              address={location.address}
               forStackedLayout={isStackedLayout}
             />
           </FormItem>
@@ -144,7 +144,7 @@ const SearchBox = ({
               <span className="text-nowrap">Rental period</span>
             </FormLabel>
             <RentalPeriodButton
-              range={search.period}
+              range={period}
               forStackedLayout={isStackedLayout}
             />
           </FormItem>

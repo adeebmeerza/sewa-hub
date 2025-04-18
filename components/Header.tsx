@@ -2,7 +2,6 @@ import { Raleway } from "next/font/google";
 import React from "react";
 import SearchBox from "./SearchBox";
 
-import { SearchProvider } from "@/app/contexts/search-context";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import {
@@ -11,6 +10,7 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "./ui/navigation-menu";
+import SearchProvider from "./search-box/search-provider";
 
 const raleway = Raleway({
   variable: "--font-raleway",

@@ -3,17 +3,13 @@
 import { cn } from "@/lib/utils";
 import React, { useState } from "react";
 import { buttonVariants } from "../ui/button";
-import { useSearch } from "@/app/contexts/search-context";
 import { Calendar } from "../ui/calendar";
 import CustomButton from "../ui/reusable/custom-button";
 import { DateRange } from "react-day-picker";
+import { useSearchContext } from "@/app/contexts/search-context";
 
 const DateRangePicker = () => {
-  const {
-    search: { period },
-    setSearch,
-  } = useSearch();
-
+  const { period, setPeriod } = useSearchContext();
   const [selectedDate, setSelectedDate] = useState<DateRange | null>(null);
 
   return (
@@ -61,7 +57,7 @@ const DateRangePicker = () => {
       <CustomButton
         size="xl"
         className="mt-4 w-full"
-        onClick={() => setSearch({ period: selectedDate })}
+        onClick={() => setPeriod(selectedDate)}
       >
         Select this period
       </CustomButton>

@@ -4,7 +4,7 @@ import { APIProvider } from "@vis.gl/react-google-maps";
 import MapContainer from "../google-maps/MapContainer";
 import { MapPin, Search } from "lucide-react";
 import CustomButton from "../ui/reusable/custom-button";
-import { useSearch } from "@/app/contexts/search-context";
+import { useSearchContext } from "@/app/contexts/search-context";
 import { useState } from "react";
 import { useUI } from "@/app/contexts/ui-context";
 
@@ -19,18 +19,13 @@ export interface IPin {
 }
 
 const LocationPicker = () => {
-  const {
-    search: { location },
-    setSearch,
-  } = useSearch();
+  const { location, setLocation } = useSearchContext();
   const [pin, setPin] = useState<Pin>(location);
 
   const { closeDialog, isDesktop } = useUI();
 
   const handleLocationConfirm = () => {
-    setSearch({
-      location: pin,
-    });
+    setLocation(pin);
     closeDialog();
   };
 

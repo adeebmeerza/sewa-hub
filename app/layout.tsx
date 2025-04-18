@@ -37,7 +37,7 @@ export default function RootLayout({
         </UIProvider>
 
         <Footer />
-        <Analytics />
+        {/* <Analytics /> */}
       </body>
     </html>
   );

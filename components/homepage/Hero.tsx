@@ -1,6 +1,6 @@
 import React from "react";
 import SearchBox from "../SearchBox";
-import { SearchProvider } from "@/app/contexts/search-context";
+import SearchProvider from "../search-box/search-provider";
 
 const Hero = () => {
   return (
