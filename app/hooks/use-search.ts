@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useFilter } from "./use-filter";
 import { addDays } from "date-fns";
@@ -25,7 +25,6 @@ export const useSearch = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  // Create a query string from the current filters and sort
   const createQueryString = useCallback(() => {
     const params = new URLSearchParams();
 
@@ -40,15 +39,30 @@ export const useSearch = () => {
     if (sort) {
       params.set("sort", sort);
     }
+
     return params.toString();
   }, [filters, query, sort]);
 
+  // TODO -- aku tambah useffect kat sini snow
+  useEffect(() => {
+    const queryString = createQueryString();
+    router.replace(`${pathname}${queryString ? `?${queryString}` : ""}`);
+  }, [filters, query, sort, pathname, router, createQueryString]);
+
+  // TODO kau punya triggerSearch
+  /*
   const triggerSearch = useCallback(() => {
     const queryString = createQueryString();
     router.push(`${pathname}${queryString ? `?${queryString}` : ""}`);
 
     console.log("Searching with:", queryString);
   }, [createQueryString, pathname, router]);
+  */
+
+  const triggerSearch = useCallback(() => {
+    // TODO -- ni saje buat function.. aq malas nak buang kat page lain hahah xD
+    console.log("Manual triggerSearch called.");
+  }, []);
 
   const reset = useCallback(() => {
     setQuery("");
