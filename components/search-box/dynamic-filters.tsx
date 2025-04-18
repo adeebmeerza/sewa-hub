@@ -54,6 +54,7 @@ const DynamicFilters = ({ searchFilterSchema }: Props) => {
 
 export default DynamicFilters;
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function onFilterChange(filters: Record<string, FilterValue[]>, sort: string) {
   throw new Error("Function not implemented.");
 }
